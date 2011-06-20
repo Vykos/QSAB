@@ -1,5 +1,7 @@
 package com.sigma.qsab;
 
+import com.sigma.qsab.gui.*;
+
 /**
  * Hello world!
  *
@@ -8,6 +10,6 @@ public class QSAB
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        MainFrame mf = new MainFrame("Quality Spa AB");
     }
 }
