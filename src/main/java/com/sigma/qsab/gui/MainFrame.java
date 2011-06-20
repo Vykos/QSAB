@@ -26,6 +26,9 @@ import javax.swing.JPanel;
 public class MainFrame extends JFrame implements ActionListener {
     private Container container;
     private Toolkit toolkit = Toolkit.getDefaultToolkit();
+    
+    private JPanel registerPanel;
+    private ImagePanel welcomePanel;
             
     private final Color bgColor = Color.WHITE;
     private final int width = 1024;
@@ -39,7 +42,10 @@ public class MainFrame extends JFrame implements ActionListener {
         /*setIconImage()*/
         container = getContentPane();
         container.setBackground(bgColor);
-        ImagePanel welcomePanel = new ImagePanel(new ImageIcon(getClass().getResource("/com/sigma/qsab/images/login.png")).getImage());
+        container.setLayout(null);
+        
+        /*WELCOME PANEL*/
+        welcomePanel = new ImagePanel(new ImageIcon(getClass().getResource("/com/sigma/qsab/images/login.png")).getImage());
         welcomePanel.setBackground(bgColor);
         welcomePanel.setLayout(null);
         JButton loginButton = new JButton("Logga in");
@@ -48,14 +54,30 @@ public class MainFrame extends JFrame implements ActionListener {
         loginButton.setActionCommand("login");
         loginButton.addActionListener(this);
         welcomePanel.add(loginButton);
-        JButton newCustomerButton = new JButton("Ny kund");
-        newCustomerButton.setBackground(bgColor);        
-        newCustomerButton.setBounds(600, 450, buttonWidth, buttonHeight);
-        newCustomerButton.setActionCommand("newcustomer");
-        newCustomerButton.addActionListener(this);
-        welcomePanel.add(newCustomerButton);
+        JButton registerButton = new JButton("Ny kund");
+        registerButton.setBackground(bgColor);        
+        registerButton.setBounds(600, 450, buttonWidth, buttonHeight);
+        registerButton.setActionCommand("register");
+        registerButton.addActionListener(this);        
+        welcomePanel.add(registerButton);
         
-        container.add(welcomePanel, BorderLayout.CENTER);        
+        /*REGISTER PANEL*/
+        registerPanel = new JPanel(new FlowLayout());
+        JButton testButton = new JButton("Test");
+        testButton.setBackground(bgColor);        
+        testButton.setPreferredSize(new Dimension(buttonWidth, buttonHeight));
+        testButton.setActionCommand("test");
+        testButton.addActionListener(this);
+        registerPanel.add(testButton);
+        
+        welcomePanel.setBounds(0, 0, width, height);
+        registerPanel.setBounds(0, 0, width, height);
+        
+        registerPanel.setVisible(false);
+        
+        container.add(welcomePanel);        
+        container.add(registerPanel);
+        
         pack();
         setVisible(true);
         
@@ -67,5 +89,17 @@ public class MainFrame extends JFrame implements ActionListener {
         });
     }
     
-    public void actionPerformed(ActionEvent e){}
+    public void actionPerformed(ActionEvent e){
+        String action = e.getActionCommand();
+        if(action.equals("register")){
+            hideAllPanels();
+            registerPanel.setVisible(true);
+        }
+    }
+
+    private void hideAllPanels() {
+        welcomePanel.setVisible(false);
+        registerPanel.setVisible(false);
+    }
+    
 }
