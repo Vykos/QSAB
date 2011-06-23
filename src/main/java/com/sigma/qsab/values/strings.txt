@@ -1,0 +1,16 @@
+//fil för inladdning av strängar. Ändra inte ordningen.
+login::Logga in
+register::Ny kund
+firstname::Förnamn
+lastname::Efternamn
+socialid::Personnummer
+street::Postadress
+zipcode::Postnummer
+city::Ort
+phone::Hemtelefon
+cellphone::Mobil
+email::E-postadress
+password::Lösenord
+passwordrepeat::Upprepa lösenord
+next::Nästa
+previous::Föregående
