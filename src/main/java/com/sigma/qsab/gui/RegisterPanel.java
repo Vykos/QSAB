@@ -4,6 +4,7 @@
  */
 package com.sigma.qsab.gui;
 
+import com.sigma.qsab.verifiers.RegisterVerifier;
 import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -19,10 +20,13 @@ public class RegisterPanel extends JPanel {
     private final static int xpos = 300;
     private final static int ypos = 100;
     
+    private GUIStrings gs;
+    
     public RegisterPanel(GUIStrings gs, ActionListener al) {
+        this.gs = gs;
         setLayout(null);    
         setBackground(GUIFields.BGCOLOR);
-                
+           
         componentList.add(RegisterComponent.newTextFieldComponent(
                 gs.getString(GUIStrings.FIRSTNAME), true, 
                 xpos, ypos));
@@ -69,8 +73,14 @@ public class RegisterPanel extends JPanel {
                 new Point(64,688), al, "register_previous"));                        
     }   
     
-    public boolean isFilledOutCorrectly() {
-        return true;        
+    public boolean isFilledOutCorrectly() {        
+        for (RegisterComponent rc : componentList) {
+            if (rc.getText().equals(gs.getString(GUIStrings.SOCIALID))) {
+                return RegisterVerifier.isSocialIDCorrect(
+                        rc.getField().getText());
+            }
+        }
+        return false;        
     }
     
     public ArrayList<RegisterComponent> getComponentList() {

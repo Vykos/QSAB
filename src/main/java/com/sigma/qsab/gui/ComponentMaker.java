@@ -22,6 +22,10 @@ public class ComponentMaker {
                                            GUIFields.BUTTONHEIGHT);
         button.setActionCommand(actionCommand);
         button.addActionListener(listener);                
+        button.setName(actionCommand);
         return button;
     }
+    
+    /*public static ArrayList<RegisterComponent> makeRegisterComponentList(
+            )*/
 }

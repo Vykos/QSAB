@@ -6,10 +6,18 @@ import com.sigma.qsab.gui.*;
  * Hello world!
  *
  */
-public class QSAB 
+public class QSAB
 {
-    public static void main( String[] args )
-    {
-        MainFrame mf = new MainFrame("Quality Spa AB");
+    MainFrame mainFrame;
+    public static void main( String[] args ) {
+        new QSAB();
+    }
+    
+    public QSAB() {
+        mainFrame = new MainFrame("Quality Spa AB");
+    }
+
+    public MainFrame getMainFrame() {
+        return mainFrame;
     }
 }

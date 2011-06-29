@@ -26,6 +26,10 @@ public class MainFrame extends JFrame implements ActionListener {
     
     private GUIStrings strings;
     
+    public MainFrame() {
+        this("No title");
+    }
+    
     public MainFrame(String title) {
         super(title);
         try {
