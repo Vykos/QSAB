@@ -1,17 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sigma.qsab.gui;
 
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author ext.jonas.frogvall
- */
 public class WelcomePanel extends ImagePanel {       
     
     public WelcomePanel(Image img, GUIStrings gs, ActionListener al) {

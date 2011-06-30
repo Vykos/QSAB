@@ -14,7 +14,7 @@ import org.junit.Test;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-public class RegisterTest {
+public class RegisterFailTest {
 
     private EmergencyAbortListener listener;
     private FrameFixture window;
@@ -46,7 +46,7 @@ public class RegisterTest {
         window.button("welcome_register").click();
         window.textBox("field_" + gs.getString(GUIStrings.FIRSTNAME)).setText("Test");
         window.textBox("field_" + gs.getString(GUIStrings.LASTNAME)).setText("Testsson");
-        window.textBox("field_" + gs.getString(GUIStrings.SOCIALID)).setText("121212-1212");
+        window.textBox("field_" + gs.getString(GUIStrings.SOCIALID)).setText("1212-121212");
         window.textBox("field_" + gs.getString(GUIStrings.STREET)).setText("Testvägen 55");
         window.textBox("field_" + gs.getString(GUIStrings.ZIPCODE)).setText("12345");
         window.textBox("field_" + gs.getString(GUIStrings.CITY)).setText("Testort");
@@ -58,7 +58,7 @@ public class RegisterTest {
         window.button("register_next").click();
         window.label("text_" + gs.getString(GUIStrings.FIRSTNAME)).requireText("Test");
         window.label("text_" + gs.getString(GUIStrings.LASTNAME)).requireText("Testsson");
-        window.label("text_" + gs.getString(GUIStrings.SOCIALID)).requireText("121212-1212");
+        window.label("text_" + gs.getString(GUIStrings.SOCIALID)).requireText("1212-121212");
         window.label("text_" + gs.getString(GUIStrings.STREET)).requireText("Testvägen 55");
         window.label("text_" + gs.getString(GUIStrings.ZIPCODE)).requireText("12345");
         window.label("text_" + gs.getString(GUIStrings.CITY)).requireText("Testort");

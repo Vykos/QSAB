@@ -19,8 +19,7 @@ public class RegisterVerifier {
                 if (!Character.isDigit(c)) return false;
             }
         }
-        String tmpSocialID = socialID.replaceAll("-", "");
-        tmpSocialID = tmpSocialID.replaceAll("\\+", "");
+        String tmpSocialID = socialID.replaceAll("-", "").replaceAll("\\+", "");
         return isCorrectSocialIDAccordingToLuhn(tmpSocialID);
     }
     
@@ -28,7 +27,7 @@ public class RegisterVerifier {
         return (((c == '-') || (c == '+')));
     }
     
-    private static boolean isCorrectSocialIDAccordingToLuhn(String indata)
+    public static boolean isCorrectSocialIDAccordingToLuhn(String indata)
     {
       int checknum = 1;
       int sum = 0;

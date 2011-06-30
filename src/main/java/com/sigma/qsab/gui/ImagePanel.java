@@ -1,17 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sigma.qsab.gui;
 
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JPanel;
-
-/**
- *
- * @author ext.jonas.frogvall
- */
 
 class ImagePanel extends JPanel {
     

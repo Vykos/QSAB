@@ -1,24 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sigma.qsab.gui;
 
+import com.sigma.qsab.glitches.GlitchManagersSingleton;
 import com.sigma.qsab.verifiers.RegisterVerifier;
 import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-/**
- *
- * @author ext.jonas.frogvall
- */
 public class RegisterPanel extends JPanel {
-    private ArrayList<RegisterComponent> componentList 
-            = new ArrayList<RegisterComponent>();
-    private final static int xpos = 300;
-    private final static int ypos = 100;
+    private ArrayList<RegisterComponent> componentList;
     
     private GUIStrings gs;
     
@@ -27,39 +17,7 @@ public class RegisterPanel extends JPanel {
         setLayout(null);    
         setBackground(GUIFields.BGCOLOR);
            
-        componentList.add(RegisterComponent.newTextFieldComponent(
-                gs.getString(GUIStrings.FIRSTNAME), true, 
-                xpos, ypos));
-        componentList.add(RegisterComponent.newTextFieldComponent(
-                gs.getString(GUIStrings.LASTNAME), true, 
-                xpos, ypos+1*(GUIFields.LABELHEIGHT+GUIFields.VERTICALGAP)));
-        componentList.add(RegisterComponent.newTextFieldComponent(
-                gs.getString(GUIStrings.SOCIALID), true, 
-                xpos, ypos+2*(GUIFields.LABELHEIGHT+GUIFields.VERTICALGAP)));
-        componentList.add(RegisterComponent.newTextFieldComponent(
-                gs.getString(GUIStrings.STREET), false, 
-                xpos, ypos+3*(GUIFields.LABELHEIGHT+GUIFields.VERTICALGAP)));
-        componentList.add(RegisterComponent.newTextFieldComponent(
-                gs.getString(GUIStrings.ZIPCODE), false, 
-                xpos, ypos+4*(GUIFields.LABELHEIGHT+GUIFields.VERTICALGAP)));
-        componentList.add(RegisterComponent.newTextFieldComponent(
-                gs.getString(GUIStrings.CITY), false, 
-                xpos, ypos+5*(GUIFields.LABELHEIGHT+GUIFields.VERTICALGAP)));
-        componentList.add(RegisterComponent.newTextFieldComponent(
-                gs.getString(GUIStrings.PHONE), false, 
-                xpos, ypos+6*(GUIFields.LABELHEIGHT+GUIFields.VERTICALGAP)));
-        componentList.add(RegisterComponent.newTextFieldComponent(
-                gs.getString(GUIStrings.CELLPHONE), true, 
-                xpos, ypos+7*(GUIFields.LABELHEIGHT+GUIFields.VERTICALGAP)));
-        componentList.add(RegisterComponent.newTextFieldComponent(
-                gs.getString(GUIStrings.EMAIL), true, 
-                xpos, ypos+8*(GUIFields.LABELHEIGHT+GUIFields.VERTICALGAP)));
-        componentList.add(RegisterComponent.newPasswordFieldComponent(
-                gs.getString(GUIStrings.PASSWORD), true, 
-                xpos, ypos+9*(GUIFields.LABELHEIGHT+GUIFields.VERTICALGAP)));
-        componentList.add(RegisterComponent.newPasswordFieldComponent(
-                gs.getString(GUIStrings.PASSWORDREPEAT), true, 
-                xpos, ypos+10*(GUIFields.LABELHEIGHT+GUIFields.VERTICALGAP)));
+        componentList = ComponentMaker.makeRegisterComponentList(gs);
         
         for (RegisterComponent component : componentList) {
             add(component.getTitleLabel());
@@ -76,8 +34,9 @@ public class RegisterPanel extends JPanel {
     public boolean isFilledOutCorrectly() {        
         for (RegisterComponent rc : componentList) {
             if (rc.getText().equals(gs.getString(GUIStrings.SOCIALID))) {
-                return RegisterVerifier.isSocialIDCorrect(
-                        rc.getField().getText());
+                return GlitchManagersSingleton.getInstance()
+                        .getFunctionGlitchManager()
+                        .isSocialIDCorrect(rc.getField().getText());                
             }
         }
         return false;        

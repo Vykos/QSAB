@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sigma.qsab.gui;
 
 import java.awt.Container;
@@ -14,58 +10,56 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/**
- *
- * @author ext.jonas.frogvall
- */
 public class MainFrame extends JFrame implements ActionListener {
+
     private Container container;
-    
     private RegisterPanel registerPanel;
     private WelcomePanel welcomePanel;
-    
     private GUIStrings strings;
-    
+
     public MainFrame() {
         this("No title");
     }
-    
+
     public MainFrame(String title) {
         super(title);
         try {
             strings = new GUIStrings("/com/sigma/qsab/values/strings.txt");
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         setPreferredSize(new Dimension(GUIFields.WIDTH, GUIFields.HEIGHT));
         /*setIconImage()*/
         container = getContentPane();
         container.setBackground(GUIFields.BGCOLOR);
         container.setLayout(null);
-        
+
         welcomePanel = new WelcomePanel(new ImageIcon(getClass().getResource(
-                "/com/sigma/qsab/images/login.png")).getImage(), strings, this);        
-        registerPanel = new RegisterPanel(strings, this);        
-        
+                "/com/sigma/qsab/images/login.png")).getImage(), strings, this);
+        registerPanel = new RegisterPanel(strings, this);
+
         setBoundsForPanels(welcomePanel, registerPanel);
         makePanelsInvisible(registerPanel);
-        addPanelsToContainer(welcomePanel, registerPanel);        
-        
+        addPanelsToContainer(welcomePanel, registerPanel);
+
         setResizable(false);
         pack();
         setVisible(true);
-        
-        addWindowListener(new WindowAdapter(){
+
+        addWindowListener(new WindowAdapter() {
+
             @Override
-            public void windowClosing(WindowEvent event){
-                dispose();                
+            public void windowClosing(WindowEvent event) {
+                dispose();
                 System.exit(0);
             }
         });
     }
-    
+
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
-        if(action.equals("register_next")){
+        if (action.equals("register_next")) {
             if (registerPanel.isComponentsEditable()) {
                 if (registerPanel.isFilledOutCorrectly()) {
                     registerPanel.setComponentsEditable(false);
@@ -75,40 +69,40 @@ public class MainFrame extends JFrame implements ActionListener {
             } else {
                 System.out.println("Nu borde den gå vidare med en ny användare");
             }
-        }
-        else if(action.equals("register_previous")){
+        } else if (action.equals("register_previous")) {
             if (registerPanel.isComponentsEditable()) {
                 hideAllPanels();
                 welcomePanel.setVisible(true);
             } else {
                 registerPanel.setComponentsEditable(true);
             }
-        }
-        else if(action.equals("welcome_register")){
+        } else if (action.equals("welcome_register")) {
             hideAllPanels();
             registerPanel.setVisible(true);
         }
-        
+
     }
 
     private void hideAllPanels() {
         welcomePanel.setVisible(false);
         registerPanel.setVisible(false);
     }
-    
-    
+
     private void setBoundsForPanels(JPanel... panels) {
-        for (JPanel panel : panels)
+        for (JPanel panel : panels) {
             panel.setBounds(0, 0, GUIFields.WIDTH, GUIFields.HEIGHT);
+        }
     }
-    
+
     private void makePanelsInvisible(JPanel... panels) {
-        for (JPanel panel : panels)
+        for (JPanel panel : panels) {
             panel.setVisible(false);
+        }
     }
-    
+
     private void addPanelsToContainer(JPanel... panels) {
-        for (JPanel panel : panels)
+        for (JPanel panel : panels) {
             container.add(panel);
+        }
     }
 }

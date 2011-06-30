@@ -1,17 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sigma.qsab.gui;
 
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-/**
- *
- * @author ext.jonas.frogvall
- */
 public class RegisterComponent<F extends JTextField> {
 
     private JLabel titleLabel, textLabel;
@@ -38,14 +30,14 @@ public class RegisterComponent<F extends JTextField> {
         field.setName("field_" + text);
     }
 
-    public static RegisterComponent<JTextField> newTextFieldComponent(String text,
-            boolean mandatory, int xpos, int ypos) {
+    public static RegisterComponent<JTextField> newTextFieldComponent(
+            String text, boolean mandatory, int xpos, int ypos) {
         return new RegisterComponent<JTextField>(text, mandatory, xpos, ypos,
                 new JTextField());
     }
 
-    public static RegisterComponent<JPasswordField> newPasswordFieldComponent(String text,
-            boolean mandatory, int xpos, int ypos) {
+    public static RegisterComponent<JPasswordField> newPasswordFieldComponent(
+            String text, boolean mandatory, int xpos, int ypos) {
         return new RegisterComponent<JPasswordField>(text, mandatory, xpos, ypos,
                 new JPasswordField());
     }

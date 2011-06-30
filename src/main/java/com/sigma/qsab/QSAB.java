@@ -1,23 +1,24 @@
 package com.sigma.qsab;
 
+import com.sigma.qsab.glitches.GlitchManagersSingleton;
 import com.sigma.qsab.gui.*;
 
-/**
- * Hello world!
- *
- */
 public class QSAB
 {
-    MainFrame mainFrame;
+    private MainFrame mainFrame;
+    private GlitchManagersSingleton glitchManagersSingleton;
+    
     public static void main( String[] args ) {
         new QSAB();
     }
     
-    public QSAB() {
-        mainFrame = new MainFrame("Quality Spa AB");
+    public QSAB() {        
+        glitchManagersSingleton = GlitchManagersSingleton.getInstance();
+        mainFrame = new MainFrame("Quality Spa AB");        
     }
 
     public MainFrame getMainFrame() {
         return mainFrame;
-    }
+    }    
+    
 }
