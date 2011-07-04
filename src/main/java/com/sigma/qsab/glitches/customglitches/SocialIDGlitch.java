@@ -11,7 +11,7 @@ public class SocialIDGlitch extends Glitch {
 
     @Override
     public boolean isSocialIDCorrect(String socialID) {
-        // Don't check format on the string
+        // Don't check format on the string but still cut off +/- chars.
         String tmpSocialID = socialID.replaceAll("-", "").replaceAll("\\+", "");
         return RegisterVerifier.isCorrectSocialIDAccordingToLuhn(tmpSocialID);
     }       
