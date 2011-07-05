@@ -3,10 +3,7 @@ package com.sigma.qsab.glitches;
 import java.util.HashMap;
 
 public abstract class GlitchManager {
-    
-    public static final boolean USESOCIALIDGLITCH = false;
-    public static final boolean USEPASSWORDFIELDGLITCH = false;
-    
+
     private HashMap<Integer,Glitch> glitchMap;
 
     public GlitchManager() {
@@ -19,6 +16,10 @@ public abstract class GlitchManager {
 
     public void setGlitchMap(HashMap<Integer, Glitch> glitchMap) {
         this.glitchMap = glitchMap;
+    }
+    
+    public void clearGlitchMap() {
+        setGlitchMap(new HashMap<Integer, Glitch>());
     }
     
     public void putGlitch(Glitch glitch) {

@@ -6,12 +6,7 @@ import com.sigma.qsab.verifiers.RegisterVerifier;
 public class FunctionGlitchManager extends GlitchManager {
 
     public FunctionGlitchManager() {
-        super();
-        if (USESOCIALIDGLITCH) {
-            this.putGlitch(new SocialIDGlitch("Formateringsfel i pnr",
-                    "Kollar inte om personnummerssträngen är rätt formaterad " +
-                    "när man registrerar en ny kund"));
-        }
+        super();       
     }
 
     public boolean isSocialIDCorrect(String text) {

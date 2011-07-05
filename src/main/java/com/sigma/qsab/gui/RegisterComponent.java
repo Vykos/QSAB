@@ -20,9 +20,9 @@ public class RegisterComponent<F extends JTextField> {
         setMandatory(mandatory);
         titleLabel.setBackground(GUIFields.BGCOLOR);
         field.setBackground(GUIFields.BGCOLOR);
-        titleLabel.setBounds(xpos, ypos, GUIFields.LABELWIDTH, GUIFields.LABELHEIGHT);
-        field.setBounds(xpos + GUIFields.LABELWIDTH + GUIFields.HORIZONTALGAP,
-                ypos, GUIFields.TEXTFIELDWIDTH, GUIFields.TEXTFIELDHEIGHT);
+        titleLabel.setBounds(xpos, ypos, GUIFields.W_LABEL, GUIFields.H_LABEL);
+        field.setBounds(xpos + GUIFields.W_LABEL + GUIFields.HORIZONTALGAP,
+                ypos, GUIFields.W_TEXTFIELD, GUIFields.H_TEXTFIELD);
         textLabel.setBounds(field.getBounds());
         textLabel.setVisible(false);
         titleLabel.setName("title_" + text);
@@ -54,7 +54,7 @@ public class RegisterComponent<F extends JTextField> {
         return mandatory;
     }
 
-    public void setMandatory(boolean mandatory) {
+    public final void setMandatory(boolean mandatory) {
         this.mandatory = mandatory;
         titleLabel.setText((mandatory ? "*" : "") + text + ":");
     }

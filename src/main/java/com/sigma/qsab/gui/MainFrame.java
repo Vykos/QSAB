@@ -4,8 +4,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,46 +12,42 @@ public class MainFrame extends JFrame implements ActionListener {
 
     private Container container;
     private RegisterPanel registerPanel;
-    private WelcomePanel welcomePanel;
+    private SuperAdminSetupPanel superAdminSetupPanel;
+    private WelcomePanel welcomePanel;    
     private GUIStrings strings;
 
     public MainFrame() {
         this("No title");
     }
 
+    @SuppressWarnings("CallToThreadDumpStack")
     public MainFrame(String title) {
         super(title);
         try {
-            strings = new GUIStrings("/com/sigma/qsab/values/strings.txt");
+            strings = new GUIStrings("/strings.properties");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        setPreferredSize(new Dimension(GUIFields.WIDTH, GUIFields.HEIGHT));
+        setPreferredSize(new Dimension(GUIFields.W_APP, GUIFields.H_APP));
         /*setIconImage()*/
         container = getContentPane();
         container.setBackground(GUIFields.BGCOLOR);
         container.setLayout(null);
 
         welcomePanel = new WelcomePanel(new ImageIcon(getClass().getResource(
-                "/com/sigma/qsab/images/login.png")).getImage(), strings, this);
+                "/login.png")).getImage(), strings, this);
         registerPanel = new RegisterPanel(strings, this);
+        superAdminSetupPanel = new SuperAdminSetupPanel(strings, this);
+        
 
-        setBoundsForPanels(welcomePanel, registerPanel);
-        makePanelsInvisible(registerPanel);
-        addPanelsToContainer(welcomePanel, registerPanel);
+        setBoundsForPanels(welcomePanel, registerPanel, superAdminSetupPanel);
+        makePanelsInvisible(registerPanel, superAdminSetupPanel);
+        addPanelsToContainer(welcomePanel, registerPanel, superAdminSetupPanel);
 
         setResizable(false);
         pack();
         setVisible(true);
-
-        addWindowListener(new WindowAdapter() {
-
-            @Override
-            public void windowClosing(WindowEvent event) {
-                dispose();
-                System.exit(0);
-            }
-        });
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     @Override
@@ -76,6 +70,13 @@ public class MainFrame extends JFrame implements ActionListener {
             } else {
                 registerPanel.setComponentsEditable(true);
             }
+        } else if (action.equals("superadmin_accept")) {
+            superAdminSetupPanel.addGlitchesToGlitchManagers();
+            hideAllPanels();
+            welcomePanel.setVisible(true);
+        } else if (action.equals("welcome_login")) {
+            hideAllPanels();
+            superAdminSetupPanel.setVisible(true);
         } else if (action.equals("welcome_register")) {
             hideAllPanels();
             registerPanel.setVisible(true);
@@ -84,13 +85,12 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     private void hideAllPanels() {
-        welcomePanel.setVisible(false);
-        registerPanel.setVisible(false);
+        makePanelsInvisible(welcomePanel, registerPanel, superAdminSetupPanel);        
     }
 
     private void setBoundsForPanels(JPanel... panels) {
         for (JPanel panel : panels) {
-            panel.setBounds(0, 0, GUIFields.WIDTH, GUIFields.HEIGHT);
+            panel.setBounds(0, 0, GUIFields.W_APP, GUIFields.H_APP);
         }
     }
 

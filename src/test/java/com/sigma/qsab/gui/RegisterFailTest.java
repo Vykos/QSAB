@@ -17,8 +17,8 @@ import org.junit.BeforeClass;
 public class RegisterFailTest {
 
     private EmergencyAbortListener listener;
-    private FrameFixture window;
-    private GUIStrings gs;
+    private FrameFixture window;    
+    private RegisterLibrary lib;
 
     @BeforeClass
     public static void setUpOnce() {
@@ -32,41 +32,40 @@ public class RegisterFailTest {
             protected MainFrame executeInEDT() {
                 return (new QSAB()).getMainFrame();
             }
-        });
-        try {
-            gs = new GUIStrings("/com/sigma/qsab/values/strings.txt");
-        } catch (Exception e) {
-        }
+        });        
         window = new FrameFixture(frame);
-        listener = EmergencyAbortListener.registerInToolkit();        
+        listener = EmergencyAbortListener.registerInToolkit();   
+        lib = new RegisterLibrary(window);
+        
     }
 
     @Test
-    public void testRegisterFillOut() {
-        window.button("welcome_register").click();
-        window.textBox("field_" + gs.getString(GUIStrings.FIRSTNAME)).setText("Test");
-        window.textBox("field_" + gs.getString(GUIStrings.LASTNAME)).setText("Testsson");
-        window.textBox("field_" + gs.getString(GUIStrings.SOCIALID)).setText("1212-121212");
-        window.textBox("field_" + gs.getString(GUIStrings.STREET)).setText("Testvägen 55");
-        window.textBox("field_" + gs.getString(GUIStrings.ZIPCODE)).setText("12345");
-        window.textBox("field_" + gs.getString(GUIStrings.CITY)).setText("Testort");
-        window.textBox("field_" + gs.getString(GUIStrings.PHONE)).setText("08-123456");
-        window.textBox("field_" + gs.getString(GUIStrings.CELLPHONE)).setText("073-1234567");
-        window.textBox("field_" + gs.getString(GUIStrings.EMAIL)).setText("test@test.com");
-        window.textBox("field_" + gs.getString(GUIStrings.PASSWORD)).setText("123456");
-        window.textBox("field_" + gs.getString(GUIStrings.PASSWORDREPEAT)).setText("123456");
-        window.button("register_next").click();
-        window.label("text_" + gs.getString(GUIStrings.FIRSTNAME)).requireText("Test");
-        window.label("text_" + gs.getString(GUIStrings.LASTNAME)).requireText("Testsson");
-        window.label("text_" + gs.getString(GUIStrings.SOCIALID)).requireText("1212-121212");
-        window.label("text_" + gs.getString(GUIStrings.STREET)).requireText("Testvägen 55");
-        window.label("text_" + gs.getString(GUIStrings.ZIPCODE)).requireText("12345");
-        window.label("text_" + gs.getString(GUIStrings.CITY)).requireText("Testort");
-        window.label("text_" + gs.getString(GUIStrings.PHONE)).requireText("08-123456");
-        window.label("text_" + gs.getString(GUIStrings.CELLPHONE)).requireText("073-1234567");
-        window.label("text_" + gs.getString(GUIStrings.EMAIL)).requireText("test@test.com");
-        window.label("text_" + gs.getString(GUIStrings.PASSWORD)).requireText("123456");
-        window.label("text_" + gs.getString(GUIStrings.PASSWORDREPEAT)).requireText("123456");          
+    public void testRegisterFillOut() throws InterruptedException {
+        //Välj personnummerfel
+        lib.clickButton("welcome_login");
+        window.list("superadmin_glitchlist").clickItem("Formateringsfel i personnummer");          
+        lib.clickButton("superadmin_accept");
+        
+        //Fyll i fält
+        lib.clickButton("welcome_register");
+        lib.fillInName("Test", "Testsson");
+        lib.fillInSocialID("1212-121212");
+        lib.fillInAddress("Testvägen 55", "12345", "Testort");
+        lib.fillInPhoneNumber("08-123456");
+        lib.fillInCellPhoneNumber("073-1234567");
+        lib.fillInEmail("test@test.com");
+        lib.fillInPasswordTwice("123456");
+        lib.clickButton("register_next");
+        //Thread.sleep(5000);
+        
+        //Kontrollera det vi fyllde i
+        lib.assertName("Test", "Testsson");
+        lib.assertSocialID("1212-121212");
+        lib.assertAddress("Testvägen 55", "12345", "Testort");
+        lib.assertPhoneNumber("08-123456");
+        lib.assertCellPhoneNumber("073-1234567");
+        lib.assertEmail("test@test.com");
+        lib.assertPasswords("123456");                  
     }
 
     @After

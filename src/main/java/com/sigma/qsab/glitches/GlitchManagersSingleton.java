@@ -22,6 +22,11 @@ public class GlitchManagersSingleton {
     public GUIGlitchManager getGUIGlitchManager() {
         return guiGlitchManager;
     }
+    
+    public void clearGlitchManagers() {
+        functionGlitchManager.clearGlitchMap();
+        guiGlitchManager.clearGlitchMap();
+    }
         
     
     private static class GlitchManagersSingletonHolder {

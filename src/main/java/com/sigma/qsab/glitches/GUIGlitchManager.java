@@ -8,10 +8,6 @@ public class GUIGlitchManager extends GlitchManager {
 
     public GUIGlitchManager() {
         super();
-        if (USEPASSWORDFIELDGLITCH) {
-            this.putGlitch(new PasswordFieldGlitch("Visa lösenord öppet",
-                    "Döljer inte inskrivna lösenord med *"));
-        }
     }
 
     public RegisterComponent makeTextRegisterComponent(String text, 
