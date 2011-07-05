@@ -36,13 +36,10 @@ public class MainFrame extends JFrame implements ActionListener {
 
         welcomePanel = new WelcomePanel(new ImageIcon(getClass().getResource(
                 "/login.png")).getImage(), strings, this);
-        registerPanel = new RegisterPanel(strings, this);
         superAdminSetupPanel = new SuperAdminSetupPanel(strings, this);
-        
-
-        setBoundsForPanels(welcomePanel, registerPanel, superAdminSetupPanel);
-        makePanelsInvisible(registerPanel, superAdminSetupPanel);
-        addPanelsToContainer(welcomePanel, registerPanel, superAdminSetupPanel);
+        setBoundsForPanels(welcomePanel, superAdminSetupPanel);
+        makePanelsInvisible(superAdminSetupPanel);
+        makePanels();
 
         setResizable(false);
         pack();
@@ -72,6 +69,7 @@ public class MainFrame extends JFrame implements ActionListener {
             }
         } else if (action.equals("superadmin_accept")) {
             superAdminSetupPanel.addGlitchesToGlitchManagers();
+            makePanels();
             hideAllPanels();
             welcomePanel.setVisible(true);
         } else if (action.equals("welcome_login")) {
@@ -104,5 +102,13 @@ public class MainFrame extends JFrame implements ActionListener {
         for (JPanel panel : panels) {
             container.add(panel);
         }
+    }
+
+    private void makePanels() {
+        container.removeAll();
+        registerPanel = new RegisterPanel(strings, this);                
+        setBoundsForPanels(registerPanel);
+        makePanelsInvisible(registerPanel);
+        addPanelsToContainer(welcomePanel, superAdminSetupPanel, registerPanel);
     }
 }
