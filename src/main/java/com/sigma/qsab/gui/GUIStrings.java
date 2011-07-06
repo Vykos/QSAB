@@ -1,5 +1,6 @@
 package com.sigma.qsab.gui;
 
+import java.io.IOException;
 import java.util.Properties;
 
 public class GUIStrings {
@@ -22,7 +23,7 @@ public class GUIStrings {
         
     private Properties strings;
     
-    public GUIStrings(String path) throws Exception {   
+    public GUIStrings(String path) throws IOException {
         strings = new Properties();     
         strings.load(getClass().getResourceAsStream(path));        
     }
