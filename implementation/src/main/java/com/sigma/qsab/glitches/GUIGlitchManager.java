@@ -1,6 +1,5 @@
 package com.sigma.qsab.glitches;
 
-import com.sigma.qsab.glitches.customglitches.PasswordFieldGlitch;
 import com.sigma.qsab.gui.ComponentMaker;
 import com.sigma.qsab.gui.RegisterComponent;
 
@@ -14,8 +13,8 @@ public class GUIGlitchManager extends GlitchManager {
             boolean mandatory, int componentNR) {
         Glitch glitch = getGlitch(Glitch.TEXTFIELDGLITCH);
         if (glitchExists(glitch)) {
-            //use glitch version
-            return glitch.makeTextRegisterComponent(text, mandatory, 
+            //use glitch version            
+            return (RegisterComponent)glitch.performGlitch(text, mandatory, 
                 componentNR); 
         }
         return ComponentMaker.makeTextRegisterComponent(text, mandatory, 
@@ -27,7 +26,7 @@ public class GUIGlitchManager extends GlitchManager {
         Glitch glitch = getGlitch(Glitch.PASSWORDFIELDGLITCH);
         if (glitchExists(glitch)) {
             //use glitch version
-            return glitch.makePasswordRegisterComponent(text, mandatory, 
+            return (RegisterComponent)glitch.performGlitch(text, mandatory, 
                 componentNR); 
         }
         return ComponentMaker.makePasswordRegisterComponent(text, mandatory, 

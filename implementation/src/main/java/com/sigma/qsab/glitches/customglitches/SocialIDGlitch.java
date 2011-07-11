@@ -4,15 +4,23 @@ import com.sigma.qsab.glitches.Glitch;
 import com.sigma.qsab.verifiers.RegisterVerifier;
 
 public class SocialIDGlitch extends Glitch {
+    private static String shortDesc = "Formateringsfel i personnummer";
+    private static String longDesc = "Kollar inte om personnummerssträngen " + 
+            "är rätt formaterad när man registrerar en ny kund, men kollar " +
+            "fortfarande att strängen är rätt enl. Luhns algoritm.";    
 
-    public SocialIDGlitch(String longDescription, String shortDescription) {
-        super(longDescription, shortDescription, Glitch.SOCIALIDGLITCH);
+    public SocialIDGlitch() {
+        super(shortDesc, longDesc, SOCIALIDGLITCH);
     }
 
     @Override
-    public boolean isSocialIDCorrect(String socialID) {
-        // Don't check format on the string but still cut off +/- chars.
+    public Object performGlitch(Object... args) {
+        String socialID = (String)args[0];
+        
+         // Don't check format on the string but still cut off +/- chars.
         String tmpSocialID = socialID.replaceAll("-", "").replaceAll("\\+", "");
         return RegisterVerifier.isCorrectSocialIDAccordingToLuhn(tmpSocialID);
-    }       
+    }
+    
+    
 }
