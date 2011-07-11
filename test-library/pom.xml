@@ -11,5 +11,11 @@
             <artifactId>fest-swing-junit</artifactId>
             <version>1.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.sigma</groupId>
+            <artifactId>QSAB</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>
