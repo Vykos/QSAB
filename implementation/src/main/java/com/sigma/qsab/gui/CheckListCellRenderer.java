@@ -7,7 +7,6 @@ import javax.swing.ListCellRenderer;
 
 class CheckListCellRenderer extends JCheckBox implements ListCellRenderer {
 
-    @Override
     public Component getListCellRendererComponent(
             JList list, Object value, int index,
             boolean isSelected, boolean hasFocus) {

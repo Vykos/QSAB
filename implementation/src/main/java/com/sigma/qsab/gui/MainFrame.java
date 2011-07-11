@@ -47,8 +47,7 @@ public class MainFrame extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
         if (action.equals("register_next")) {
             if (registerPanel.isComponentsEditable()) {
