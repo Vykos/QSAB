@@ -1,5 +1,6 @@
 package com.sigma.qsab.gui;
 
+import com.sigma.qsab.exceptions.IncorrectGlitchException;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -47,7 +48,9 @@ public class MainFrame extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-        public void actionPerformed(ActionEvent e) {
+    @Override
+    @SuppressWarnings("CallToThreadDumpStack")
+    public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
         if (action.equals("register_next")) {
             if (registerPanel.isComponentsEditable()) {
@@ -67,7 +70,11 @@ public class MainFrame extends JFrame implements ActionListener {
                 registerPanel.setComponentsEditable(true);
             }
         } else if (action.equals("superadmin_accept")) {
-            superAdminSetupPanel.addGlitchesToGlitchManagers();
+            try {
+                superAdminSetupPanel.addGlitchesToGlitchManagers();
+            } catch (IncorrectGlitchException ige) {
+                ige.printStackTrace();
+            }            
             makePanels();
             hideAllPanels();
             welcomePanel.setVisible(true);

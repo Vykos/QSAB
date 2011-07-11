@@ -4,6 +4,7 @@
  */
 package com.sigma.qsab.gui;
 
+import com.sigma.qsab.exceptions.IncorrectGlitchException;
 import com.sigma.qsab.glitches.Glitch;
 import com.sigma.qsab.glitches.GlitchManagersSingleton;
 import com.sigma.qsab.glitches.customglitches.GlitchList;
@@ -34,7 +35,7 @@ public class SuperAdminSetupPanel extends JPanel {
                 new Point(384, 644), al, "superadmin_accept"));
     }
 
-    public void addGlitchesToGlitchManagers() {
+    public void addGlitchesToGlitchManagers() throws IncorrectGlitchException {
         GlitchManagersSingleton.getInstance().clearGlitchManagers();
         ListModel model = glitchList.getModel();
         for (int i = 0; i < model.getSize(); i++) {
@@ -46,8 +47,11 @@ public class SuperAdminSetupPanel extends JPanel {
             if ((glitch.getOverrideID() < Glitch.FUNCTIONMAX)
                     && (glitch.getOverrideID() > Glitch.FUNCTIONMIN)) {
                 GlitchManagersSingleton.getInstance().getFunctionGlitchManager().putGlitch(glitch);
-            } else {
+            } else if ((glitch.getOverrideID() < Glitch.GUIMAX)
+                    && (glitch.getOverrideID() > Glitch.GUIMIN)) {
                 GlitchManagersSingleton.getInstance().getGUIGlitchManager().putGlitch(glitch);
+            } else {
+                throw new IncorrectGlitchException("Glitch with incorrect ID found.");
             }
         }
     }
