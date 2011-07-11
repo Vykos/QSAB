@@ -1,68 +1,117 @@
 package com.sigma.qsab.gui;
 
-//Requires Fest library:
-import com.sigma.qsab.QSAB;
-import org.fest.swing.core.EmergencyAbortListener;
-import org.fest.swing.edt.FailOnThreadViolationRepaintManager;
-import org.fest.swing.edt.GuiActionRunner;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.fixture.FrameFixture;
-
-//Requires JUnit 4.1 library:
 import org.junit.After;
-import org.junit.Test;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class RegisterTest {
 
-    private EmergencyAbortListener listener;
-    private FrameFixture window;    
-    private RegisterLibrary lib;
+    private static GUITestRunner runner;
+    private String firstname;
+    private String lastname;
+    private String socialID;
+    private String street;
+    private String zipCode;
+    private String city;
+    private String phone;
+    private String cellPhone;
+    private String email;
+    private String password;
 
     @BeforeClass
     public static void setUpOnce() {
-        FailOnThreadViolationRepaintManager.install();
+        runner = new GUITestRunner();
     }
 
     @Before
     public void setUp() {
-        MainFrame frame = GuiActionRunner.execute(new GuiQuery<MainFrame>() {
-
-            protected MainFrame executeInEDT() {
-                return (new QSAB()).getMainFrame();
-            }
-        });        
-        window = new FrameFixture(frame);
-        listener = EmergencyAbortListener.registerInToolkit();   
-        lib = new RegisterLibrary(window);
-        
-    }
-
-    @Test
-    public void testRegisterFillOut() throws InterruptedException {
-        lib.clickButton("welcome_register");
-        lib.fillInName("Test", "Testsson");
-        lib.fillInSocialID("121212-1212");
-        lib.fillInAddress("Testv√§gen 55", "12345", "Testort");
-        lib.fillInPhoneNumber("08-123456");
-        lib.fillInCellPhoneNumber("073-1234567");
-        lib.fillInEmail("test@test.com");
-        lib.fillInPasswordTwice("123456");
-        lib.clickButton("register_next");
-        //Thread.sleep(5000);
-        lib.assertName("Test", "Testsson");
-        lib.assertSocialID("121212-1212");
-        lib.assertAddress("Testv√§gen 55", "12345", "Testort");
-        lib.assertPhoneNumber("08-123456");
-        lib.assertCellPhoneNumber("073-1234567");
-        lib.assertEmail("test@test.com");
-        lib.assertPasswords("123456");                        
+        runner.initiate();
     }
 
     @After
     public void tearDown() {
-        listener.unregister();
-        window.cleanUp();
+        runner.tearDown();
+    }
+
+    @Test
+    public void testRegisterFillOut() {
+        findForm();
+        prepareStrings();
+        fillOutForm();
+
+        runner.clickButton("register_next");
+        runner.pause(1000);
+
+        assertForm();
+    }
+
+    @Test
+    public void testFailRegisterFillOut() {
+        selectGlitch();
+        findForm();
+        prepareErroneousStrings();
+        fillOutForm();
+
+        runner.clickButton("register_next");
+        runner.pause(1000);
+
+        assertForm();
+    }
+
+    private void selectGlitch() {
+        runner.clickButton("welcome_login");
+        runner.selectItemFromGlitchList("Formateringsfel i personnummer");
+        runner.clickButton("superadmin_accept");
+    }
+
+    private void findForm() {
+        runner.clickButton("welcome_register");
+    }
+
+    private void prepareStrings() {
+        firstname = "Test";
+        lastname = "Testsson";
+        socialID = "121212-1212";
+        street = "Testv‰gen 55";
+        zipCode = "12345";
+        city = "Testort";
+        phone = "08-123456";
+        cellPhone = "073-123456";
+        email = "test@test.com";
+        password = "123456";
+    }
+
+    private void prepareErroneousStrings() {
+        firstname = "Test";
+        lastname = "Testsson";
+        socialID = "1212-121212";
+        street = "Testv‰gen 55";
+        zipCode = "12345";
+        city = "Testort";
+        phone = "08-123456";
+        cellPhone = "073-123456";
+        email = "test@test.com";
+        password = "123456";
+    }
+
+    private void fillOutForm() {
+        runner.fillInName(firstname, lastname);
+        runner.fillInSocialID(socialID);
+        runner.fillInAddress(street, zipCode, city);
+        runner.fillInPhoneNumber(phone);
+        runner.fillInCellPhoneNumber(cellPhone);
+        runner.fillInEmail(email);
+        runner.fillInPasswordTwice(password);
+    }
+
+    private void assertForm() {
+        runner.assertName(firstname, lastname);
+        runner.assertSocialID(socialID);
+        runner.assertAddress(street, zipCode, city);
+        runner.assertPhoneNumber(phone);
+        runner.assertCellPhoneNumber(cellPhone);
+        runner.assertEmail(email);
+        runner.assertPasswords(password);
     }
 }
