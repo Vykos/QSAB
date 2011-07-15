@@ -1,5 +1,26 @@
 Att göra:
 
+2011-07-18:
+
+Innehåll i rapporten
+    * Problem med klassladdning av dynamiska objekt
+    * Problem med cirkulära beroenden mellan test biblioteket och implementationen
+
+Versionshantera rapporten som pdf
+
+Inför en acceptanstestmodul för att koppla isär implementationen och testbiblioteket
+
+Inför en property fil med de klasser som utgör de kända felen
+
+Utskrift för formulärfel
+
+"Mandatory" med fel
+
+
+
+
+
+
 2011-07-11:
 
 Embryo till rapport
