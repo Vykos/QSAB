@@ -6,8 +6,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>test-library</module>
         <module>implementation</module>
+        <module>test-library</module>
         <module>web-start</module>
     </modules>
     <properties>
