@@ -1,13 +1,13 @@
-*Sammanfattning
+ï»¿*Sammanfattning
 *Abstract
-*Förord
-*Innehållsförteckning
+*FÃ¶rord
+*InnehÃ¥llsfÃ¶rteckning
 *Problembeskrivning?
 *Historik
 *Mutation testing
 **MuJava
-*Fler lösningsförslag
-*Diskussion runt olika lösningsförslag
+*Fler lÃ¶sningsfÃ¶rslag
+*Diskussion runt olika lÃ¶sningsfÃ¶rslag
 *Implementation
 *Slutsats
 *Litteraturlista
