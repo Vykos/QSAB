@@ -7,11 +7,12 @@ package com.sigma.qsab.gui;
 import com.sigma.qsab.exceptions.IncorrectGlitchException;
 import com.sigma.qsab.glitches.Glitch;
 import com.sigma.qsab.glitches.GlitchManagersSingleton;
-import com.sigma.qsab.glitches.customglitches.GlitchList;
+import com.sigma.qsab.glitches.GlitchLoader;
 import java.awt.Point;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 
 /**
@@ -23,14 +24,21 @@ public class SuperAdminSetupPanel extends JPanel {
     GUIStrings gs;
     CheckList glitchList;
 
+    @SuppressWarnings("CallToThreadDumpStack")
     public SuperAdminSetupPanel(GUIStrings gs, ActionListener al) {
         this.gs = gs;
         setLayout(null);
         setBackground(GUIFields.BGCOLOR);
-        glitchList = ComponentMaker.makeGlitchCheckList(GlitchList.getAllGlitches());
-        JScrollPane scrollPane = ComponentMaker.makeGlitchCheckListScrollPane(
-                glitchList);
-        add(scrollPane);
+        Glitch[] glitchArray = null;
+        try {
+            glitchArray = GlitchLoader.getGlitches();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        if (glitchArray != null) {
+            glitchList = ComponentMaker.makeGlitchCheckList(glitchArray);
+            add(ComponentMaker.makeGlitchCheckListScrollPane(glitchList));
+        }
         add(ComponentMaker.makeStandardButton(gs.getString(GUIStrings.SUPERADMINACCEPT),
                 new Point(384, 644), al, "superadmin_accept"));
     }

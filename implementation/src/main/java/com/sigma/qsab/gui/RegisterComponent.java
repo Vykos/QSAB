@@ -87,7 +87,6 @@ public class RegisterComponent<F extends JTextField> {
 
     public void updateTextLabelText() {
         textLabel.setText(field.getText());
-        System.out.println(text + ": " + textLabel.getText());
     }
 
     public void clearField() {

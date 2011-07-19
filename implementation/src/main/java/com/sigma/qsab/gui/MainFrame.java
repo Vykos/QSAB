@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame implements ActionListener {
@@ -24,6 +25,7 @@ public class MainFrame extends JFrame implements ActionListener {
     @SuppressWarnings("CallToThreadDumpStack")
     public MainFrame(String title) {
         super(title);
+        //JOptionPane.showMessageDialog(this, System.getProperty("java.class.path"));
         try {
             strings = new GUIStrings("/strings.properties");
         } catch (Exception e) {
@@ -57,10 +59,10 @@ public class MainFrame extends JFrame implements ActionListener {
                 if (registerPanel.isFilledOutCorrectly()) {
                     registerPanel.setComponentsEditable(false);
                 } else {
-                    System.out.println("Nu borde den klaga p√• felaktig data");
+                    System.out.println("Nu borde den klaga pÂ felaktig data");
                 }
             } else {
-                System.out.println("Nu borde den g√• vidare med en ny anv√§ndare");
+                System.out.println("Nu borde den gÂ vidare med en ny anv‰ndare");
             }
         } else if (action.equals("register_previous")) {
             if (registerPanel.isComponentsEditable()) {
