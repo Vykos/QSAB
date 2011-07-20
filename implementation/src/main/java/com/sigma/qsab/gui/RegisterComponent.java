@@ -9,11 +9,11 @@ public class RegisterComponent<F extends JTextField> {
     private JLabel titleLabel, textLabel;
     private F field;
     private boolean mandatory;
-    private String text;
+    private String title;
 
-    private RegisterComponent(String text, boolean mandatory,
+    private RegisterComponent(String title, boolean mandatory,
             int xpos, int ypos, F field) {
-        this.text = text;
+        this.title = title;
         titleLabel = new JLabel();
         textLabel = new JLabel();
         this.field = field;
@@ -25,9 +25,9 @@ public class RegisterComponent<F extends JTextField> {
                 ypos, GUIFields.W_TEXTFIELD, GUIFields.H_TEXTFIELD);
         textLabel.setBounds(field.getBounds());
         textLabel.setVisible(false);
-        titleLabel.setName("title_" + text);
-        textLabel.setName("text_" + text);
-        field.setName("field_" + text);
+        titleLabel.setName("title_" + title);
+        textLabel.setName("text_" + title);
+        field.setName("field_" + title);
     }
 
     public static RegisterComponent<JTextField> newTextFieldComponent(
@@ -42,12 +42,16 @@ public class RegisterComponent<F extends JTextField> {
                 new JPasswordField());
     }
 
-    public String getText() {
-        return text;
+    public String getTitle() {
+        return title;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    public String getText() {
+        return field.getText();
     }
 
     public boolean isMandatory() {
@@ -56,7 +60,7 @@ public class RegisterComponent<F extends JTextField> {
 
     public final void setMandatory(boolean mandatory) {
         this.mandatory = mandatory;
-        titleLabel.setText((mandatory ? "*" : "") + text + ":");
+        titleLabel.setText((mandatory ? "*" : "") + title + ":");
     }
 
     public JLabel getTitleLabel() {
@@ -78,6 +82,7 @@ public class RegisterComponent<F extends JTextField> {
         } else {
             textLabel.setVisible(true);
             field.setVisible(false);
+            setFieldError(false);
         }
     }
 
@@ -91,5 +96,9 @@ public class RegisterComponent<F extends JTextField> {
 
     public void clearField() {
         field.setText("");
+    }
+    
+    public void setFieldError(boolean isError) {
+        field.setBackground(isError ? GUIFields.ERRORCOLOR : GUIFields.BGCOLOR);
     }
 }

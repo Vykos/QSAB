@@ -4,13 +4,9 @@ import com.sigma.qsab.glitches.Glitch;
 import com.sigma.qsab.glitches.GlitchManagersSingleton;
 import java.awt.Point;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
 
 public class ComponentMaker {
 

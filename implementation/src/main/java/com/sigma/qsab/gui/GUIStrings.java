@@ -20,6 +20,7 @@ public class GUIStrings {
     public final static String NEXT = "next";
     public final static String PREVIOUS = "previous";
     public final static String SUPERADMINACCEPT="superadminaccept";
+    public final static String REGISTERERRORMESSAGE="registererrormessage";
         
     private Properties strings;
     

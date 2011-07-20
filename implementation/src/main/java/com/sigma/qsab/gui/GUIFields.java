@@ -4,6 +4,7 @@ import java.awt.Color;
 
 public abstract class GUIFields {
     public final static Color BGCOLOR = Color.WHITE;
+    public final static Color ERRORCOLOR = Color.RED;
     public final static int W_APP = 1024;
     public final static int H_APP = 768;
     public final static int W_BUTTON = 180;

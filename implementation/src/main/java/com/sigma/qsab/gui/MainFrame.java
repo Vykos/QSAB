@@ -56,10 +56,11 @@ public class MainFrame extends JFrame implements ActionListener {
         String action = e.getActionCommand();
         if (action.equals("register_next")) {
             if (registerPanel.isComponentsEditable()) {
+                registerPanel.setAllFieldsError(false);
                 if (registerPanel.isFilledOutCorrectly()) {
                     registerPanel.setComponentsEditable(false);
                 } else {
-                    System.out.println("Nu borde den klaga på felaktig data");
+                    JOptionPane.showMessageDialog(this, strings.getString(GUIStrings.REGISTERERRORMESSAGE));
                 }
             } else {
                 System.out.println("Nu borde den gå vidare med en ny användare");

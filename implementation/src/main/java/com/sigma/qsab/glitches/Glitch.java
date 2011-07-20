@@ -3,8 +3,9 @@ package com.sigma.qsab.glitches;
 public abstract class Glitch implements Comparable<Glitch> {
 
     public static int FUNCTIONMIN = 1000;
-    public static int SOCIALIDGLITCH = 1001;
-    public static int REGISTERVERIFYGLITCH = 1002;
+    public static int REGISTER_SOCIALIDGLITCH = 1001;
+    public static int REGISTER_VERIFYGLITCH = 1002;
+    public static int REGISTER_ISMANDATORYGLITCH = 1003;
     public static int FUNCTIONMAX = 1999;
     public static int GUIMIN = 2000;
     public static int TEXTFIELDGLITCH = 2001;
