@@ -49,22 +49,21 @@ public abstract class GlitchLoader {
         ArrayList<Glitch> glitchList = new ArrayList<Glitch>();
         ClassLoader loader = new URLClassLoader(new URL[]{}, Glitch.class.getClassLoader());
         JarFile jar = new JarFile(path);
-        Enumeration<JarEntry> entries = jar.entries();        
+        Enumeration<JarEntry> entries = jar.entries();
         while (entries.hasMoreElements()) {
-            JarEntry entry = entries.nextElement();            
+            JarEntry entry = entries.nextElement();
             if (entry.isDirectory()) continue;
             if (!entry.getName().startsWith("com.sigma.qsab.glitches.customglitches.")) continue;
             try {
-                    glitchList.add(
-                            (Glitch) (loader.loadClass("com.sigma.qsab.glitches.customglitches."
-                            + entry.getName()).newInstance()));
-                } catch (ClassNotFoundException ex) {
-                    System.out.println("Class " + entry.getName() + " could not be found.");
-                } catch (InstantiationException ex) {
-                    System.out.println("Class " + entry.getName() + " could not be initiated.");
-                } catch (IllegalAccessException ex) {
-                    System.out.println("Class " + entry.getName() + " could not be accessed.");
-                }
+                glitchList.add(
+                        (Glitch) (loader.loadClass(entry.getName()).newInstance()));
+            } catch (ClassNotFoundException ex) {
+                System.out.println("Class " + entry.getName() + " could not be found.");
+            } catch (InstantiationException ex) {
+                System.out.println("Class " + entry.getName() + " could not be initiated.");
+            } catch (IllegalAccessException ex) {
+                System.out.println("Class " + entry.getName() + " could not be accessed.");
+            }
         }
         return glitchList;
     }
