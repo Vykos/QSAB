@@ -1,5 +1,26 @@
 Att göra:
 
+
+2011-07-29
+
+Problembeskrivning i rapporten
+(1/2 -- 1/4 A4)
+
+Ta bort number of glitches ur propertyfilen
+nrofglitches=4
+
+Lösenordet likadant två gånger
+
+E-postadress på rättformat
+TDD fram en lösning med positivt utfall och negativt utfall
+
+Skapa bakend för att spara och hämta kundinformation
+(DAO för att abtrahera bort bakomliggande lagring, DTO för att spara datat)
+DAO = Data Access Object abstraherar bort datalagringen (dvs innehåller hashtabellen eller liknande)
+DTO = Data Transfer Object (Beskriver ett objekt, t.ex. en kund)
+
+
+
 2011-07-18:
 
 Innehåll i rapporten
