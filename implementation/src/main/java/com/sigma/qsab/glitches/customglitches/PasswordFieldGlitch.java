@@ -5,8 +5,8 @@ import com.sigma.qsab.gui.ComponentMaker;
 
 public class PasswordFieldGlitch extends Glitch {
 
-    private static String shortDesc = "Visa lösenord öppet";
-    private static String longDesc = "Döljer inte inskrivna lösenord med *";
+    private static String shortDesc = "Visa lÃ¶senord Ã¶ppet";
+    private static String longDesc = "DÃ¶ljer inte inskrivna lÃ¶senord med *";
 
     public PasswordFieldGlitch() {
         super(shortDesc, longDesc, PASSWORDFIELDGLITCH);

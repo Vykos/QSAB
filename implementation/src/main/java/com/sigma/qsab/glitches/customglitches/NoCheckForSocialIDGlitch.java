@@ -6,9 +6,9 @@ import com.sigma.qsab.verifiers.RegisterVerifier;
 public class NoCheckForSocialIDGlitch extends Glitch {
     private static String shortDesc = "Kontrollera inte personnummer alls";
     private static String longDesc = "Kontrollerar inte huruvida personnummer " +
-            "är ifyllt över huvud taget. Är fältet betvingat så kan det " +
-            "fortfarande gälla att blanka strängar inte går igenom, beroende " +
-            "på val av andra fel.";    
+            "Ã¤r ifyllt Ã¶ver huvud taget. Ã¤r fÃ¤ltet betvingat sÃ¥ kan det " +
+            "fortfarande gÃ¤lla att blanka strÃ¤ngar inte gÃ¥r igenom, beroende " +
+            "pÃ¥ val av andra fel.";
 
     public NoCheckForSocialIDGlitch() {
         super(shortDesc, longDesc, REGISTER_SOCIALIDGLITCH);

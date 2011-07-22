@@ -63,7 +63,7 @@ public class MainFrame extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(this, strings.getString(GUIStrings.REGISTERERRORMESSAGE));
                 }
             } else {
-                System.out.println("Nu borde den gÂ vidare med en ny anv‰ndare");
+                System.out.println("Nu borde den g√• vidare med en ny anv√§ndare");
             }
         } else if (action.equals("register_previous")) {
             if (registerPanel.isComponentsEditable()) {
