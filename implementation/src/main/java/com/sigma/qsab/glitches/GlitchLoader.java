@@ -18,16 +18,13 @@ public abstract class GlitchLoader {
         glitchMap.load(GlitchLoader.class.getResourceAsStream("/glitches.properties"));
         ArrayList<Glitch> glitchList = new ArrayList<Glitch>();
         ClassLoader loader = new URLClassLoader(new URL[]{}, Glitch.class.getClassLoader());
-        for (int i = 0; i < Integer.valueOf(glitchMap.getProperty("nrofglitches", "0")).intValue(); i++) {
-            try {
-                glitchList.add((Glitch) (loader.loadClass("com.sigma.qsab.glitches.customglitches." + glitchMap.getProperty("" + i)).newInstance()));
-            } catch (ClassNotFoundException ex) {
-                System.out.println("Class " + glitchMap.getProperty("" + i) + " could not be found.");
-            } catch (InstantiationException ex) {
-                System.out.println("Class " + glitchMap.getProperty("" + i) + " could not be initiated.");
-            } catch (IllegalAccessException ex) {
-                System.out.println("Class " + glitchMap.getProperty("" + i) + " could not be accessed.");
-            }
+        for (String key : glitchMap.stringPropertyNames()) {
+            String glitchName = glitchMap.getProperty(key);
+            Class glitchClass = loadGlitchClass(glitchName, loader);
+            if (glitchClass == null) continue;            
+            Glitch glitch = instantiateGlitch(glitchClass);
+            if (glitch == null) continue;            
+            glitchList.add(glitch);
         }
         Collections.sort(glitchList);
         return glitchList.toArray(new Glitch[glitchList.size()]);
@@ -88,5 +85,25 @@ public abstract class GlitchLoader {
             }
         }
         return glitchList;
+    }
+
+    private static Class loadGlitchClass(String glitchName, ClassLoader loader) {
+        try {            
+            return loader.loadClass("com.sigma.qsab.glitches.customglitches." + glitchName);
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Glitch could not be found: " + glitchName);
+        }
+        return null;
+    }
+
+    private static Glitch instantiateGlitch(Class glitchClass) {
+        try {
+            return (Glitch) glitchClass.newInstance();
+        } catch (InstantiationException ex) {
+            System.out.println("Glitch could not be initiated.");
+        } catch (IllegalAccessException ex) {
+            System.out.println("Glitch could not be accessed.");
+        }
+        return null;
     }
 }
