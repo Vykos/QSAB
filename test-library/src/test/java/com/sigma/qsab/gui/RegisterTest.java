@@ -56,13 +56,17 @@ public class RegisterTest {
         fillOutForm();
 
         runner.clickButton("register_next");
-        runner.pause(1000);
+        runner.pause(1000);       
 
         assertForm();
+        
+        runner.clickButton("register_previous");
+        runner.clickButton("register_previous");
+        runner.clickButton("welcome_login");
     }
 
     private void selectGlitch() {
-        runner.clickButton("welcome_login");
+        runner.clickButton("welcome_superadmin");
         runner.selectItemFromGlitchList("Formateringsfel i personnummer");
         runner.clickButton("superadmin_accept");
     }
