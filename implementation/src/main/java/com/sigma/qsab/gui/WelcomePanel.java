@@ -6,14 +6,16 @@ import java.awt.event.ActionListener;
 
 public class WelcomePanel extends ImagePanel {       
     
-    public WelcomePanel(Image img, GUIStrings gs, ActionListener al) {
+    public WelcomePanel(Image img, GUIStrings strings, ActionListener al) {
         super(img);
         setBackground(GUIFields.BGCOLOR);
         setLayout(null);
-        add(ComponentMaker.makeStandardButton(gs.getString(GUIStrings.LOGIN),
+        add(ComponentMaker.makeStandardButton(strings.getString(GUIStrings.LOGIN),
                 new Point(600,400), al, "welcome_login"));                
-        add(ComponentMaker.makeStandardButton(gs.getString(GUIStrings.REGISTER),
+        add(ComponentMaker.makeStandardButton(strings.getString(GUIStrings.REGISTER),
                 new Point(600,450), al, "welcome_register"));                        
+        add(ComponentMaker.makeStandardButton(strings.getString(GUIStrings.CHOOSEGLITCHES),
+                new Point(600,600), al, "welcome_superadmin"));   
     }
     
 }

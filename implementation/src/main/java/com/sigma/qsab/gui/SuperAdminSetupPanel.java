@@ -21,12 +21,12 @@ import javax.swing.ListModel;
  */
 public class SuperAdminSetupPanel extends JPanel {
 
-    GUIStrings gs;
+    GUIStrings strings;
     CheckList glitchList;
 
     @SuppressWarnings("CallToThreadDumpStack")
-    public SuperAdminSetupPanel(GUIStrings gs, ActionListener al) {
-        this.gs = gs;
+    public SuperAdminSetupPanel(GUIStrings strings, ActionListener al) {
+        this.strings = strings;
         setLayout(null);
         setBackground(GUIFields.BGCOLOR);
         Glitch[] glitchArray = null;
@@ -39,7 +39,7 @@ public class SuperAdminSetupPanel extends JPanel {
             glitchList = ComponentMaker.makeGlitchCheckList(glitchArray);
             add(ComponentMaker.makeGlitchCheckListScrollPane(glitchList));
         }
-        add(ComponentMaker.makeStandardButton(gs.getString(GUIStrings.SUPERADMINACCEPT),
+        add(ComponentMaker.makeStandardButton(strings.getString(GUIStrings.SUPERADMINACCEPT),
                 new Point(384, 644), al, "superadmin_accept"));
     }
 

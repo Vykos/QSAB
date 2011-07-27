@@ -1,5 +1,6 @@
 package com.sigma.qsab.gui;
 
+import com.sigma.qsab.data.CustomerStorer;
 import com.sigma.qsab.exceptions.IncorrectGlitchException;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -11,12 +12,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame implements ActionListener {
-
+    
     private Container container;
     private RegisterPanel registerPanel;
     private SuperAdminSetupPanel superAdminSetupPanel;
     private WelcomePanel welcomePanel;    
     private GUIStrings strings;
+    private CustomerStorer customers;
 
     public MainFrame() {
         this("No title");
@@ -31,6 +33,7 @@ public class MainFrame extends JFrame implements ActionListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        customers = loadCustomers();
         setPreferredSize(new Dimension(GUIFields.W_APP, GUIFields.H_APP));
         /*setIconImage()*/
         container = getContentPane();
@@ -58,18 +61,19 @@ public class MainFrame extends JFrame implements ActionListener {
             if (registerPanel.isComponentsEditable()) {
                 registerPanel.setAllFieldsError(false);
                 if (registerPanel.isFilledOutCorrectly()) {
+                    customers.put(registerPanel.getCustomer());
                     registerPanel.setComponentsEditable(false);
                 } else {
                     JOptionPane.showMessageDialog(this, strings.getString(GUIStrings.REGISTERERRORMESSAGE));
                 }
             } else {
-                System.out.println("Nu borde den g√• vidare med en ny anv√§ndare");
+                System.out.println("Nu borde den gÂ vidare med en ny anv‰ndare");
             }
         } else if (action.equals("register_previous")) {
             if (registerPanel.isComponentsEditable()) {
                 hideAllPanels();
                 welcomePanel.setVisible(true);
-            } else {
+            } else {                
                 registerPanel.setComponentsEditable(true);
             }
         } else if (action.equals("superadmin_accept")) {
@@ -81,12 +85,15 @@ public class MainFrame extends JFrame implements ActionListener {
             makePanels();
             hideAllPanels();
             welcomePanel.setVisible(true);
-        } else if (action.equals("welcome_login")) {
+        } else if (action.equals("welcome_superadmin")) {
             hideAllPanels();
             superAdminSetupPanel.setVisible(true);
         } else if (action.equals("welcome_register")) {
             hideAllPanels();
             registerPanel.setVisible(true);
+        } else if (action.equals("welcome_login")) {
+            //login panel show ish
+            System.out.println(customers.toString());
         }
 
     }
@@ -119,5 +126,9 @@ public class MainFrame extends JFrame implements ActionListener {
         setBoundsForPanels(registerPanel);
         makePanelsInvisible(registerPanel);
         addPanelsToContainer(welcomePanel, superAdminSetupPanel, registerPanel);
+    }
+
+    private CustomerStorer loadCustomers() {
+        return new CustomerStorer();
     }
 }

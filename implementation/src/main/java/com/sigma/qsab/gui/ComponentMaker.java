@@ -23,30 +23,30 @@ public class ComponentMaker {
     }
 
     public static ArrayList<RegisterComponent> makeRegisterComponentList(
-            GUIStrings gs) {
+            GUIStrings strings) {
         ArrayList<RegisterComponent> componentList = new ArrayList<RegisterComponent>();
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makeTextRegisterComponent(
-                gs.getString(GUIStrings.FIRSTNAME), true, 0));
+                strings.getString(GUIStrings.FIRSTNAME), true, 0));
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makeTextRegisterComponent(
-                gs.getString(GUIStrings.LASTNAME), true, 1));
+                strings.getString(GUIStrings.LASTNAME), true, 1));
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makeTextRegisterComponent(
-                gs.getString(GUIStrings.SOCIALID), true, 2));
+                strings.getString(GUIStrings.SOCIALID), true, 2));
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makeTextRegisterComponent(
-                gs.getString(GUIStrings.STREET), false, 3));
+                strings.getString(GUIStrings.STREET), false, 3));
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makeTextRegisterComponent(
-                gs.getString(GUIStrings.ZIPCODE), false, 4));
+                strings.getString(GUIStrings.ZIPCODE), false, 4));
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makeTextRegisterComponent(
-                gs.getString(GUIStrings.CITY), false, 5));
+                strings.getString(GUIStrings.CITY), false, 5));
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makeTextRegisterComponent(
-                gs.getString(GUIStrings.PHONE), false, 6));
+                strings.getString(GUIStrings.PHONE), false, 6));
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makeTextRegisterComponent(
-                gs.getString(GUIStrings.CELLPHONE), true, 7));
+                strings.getString(GUIStrings.CELLPHONE), true, 7));
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makeTextRegisterComponent(
-                gs.getString(GUIStrings.EMAIL), true, 8));
+                strings.getString(GUIStrings.EMAIL), true, 8));
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makePasswordRegisterComponent(
-                gs.getString(GUIStrings.PASSWORD), true, 9));
+                strings.getString(GUIStrings.PASSWORD), true, 9));
         componentList.add(GlitchManagersSingleton.getInstance().getGUIGlitchManager().makePasswordRegisterComponent(
-                gs.getString(GUIStrings.PASSWORDREPEAT), true, 10));
+                strings.getString(GUIStrings.PASSWORDREPEAT), true, 10));
         return componentList;
     }
 
