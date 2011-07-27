@@ -6,11 +6,12 @@ public abstract class Glitch implements Comparable<Glitch> {
     public static int REGISTER_SOCIALIDGLITCH = 1001;
     public static int REGISTER_VERIFYGLITCH = 1002;
     public static int REGISTER_ISMANDATORYGLITCH = 1003;
+    public static int REGISTER_AREPASSWORDSEQUALGLITCH = 1004;
     public static int FUNCTIONMAX = 1999;
     public static int GUIMIN = 2000;
     public static int TEXTFIELDGLITCH = 2001;
     public static int PASSWORDFIELDGLITCH = 2002;
-    public static int GUIMAX = 2999;
+    public static int GUIMAX = 2999;    
     private String longDescription, shortDescription;
     private int overrideID;
 

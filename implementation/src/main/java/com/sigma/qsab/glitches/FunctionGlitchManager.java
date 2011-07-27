@@ -1,6 +1,5 @@
 package com.sigma.qsab.glitches;
 
-import com.sigma.qsab.gui.RegisterComponent;
 import com.sigma.qsab.verifiers.RegisterVerifier;
 
 public class FunctionGlitchManager extends GlitchManager {
@@ -25,5 +24,14 @@ public class FunctionGlitchManager extends GlitchManager {
             return (Boolean) glitch.performGlitch(text);
         }
         return RegisterVerifier.isMandatoryRegisterFieldFilledOut(text);
+    }
+
+    public boolean arePasswordsEqual(String password, String passwordrepeat) {
+        Glitch glitch = getGlitch(Glitch.REGISTER_AREPASSWORDSEQUALGLITCH);
+        if (glitchExists(glitch)) {
+            //use glitch version
+            return (Boolean) glitch.performGlitch(password, passwordrepeat);
+        }
+        return RegisterVerifier.arePasswordsEqual(password, passwordrepeat);
     }
 }

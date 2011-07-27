@@ -53,4 +53,8 @@ public class RegisterVerifier {
     public static boolean isMandatoryRegisterFieldFilledOut(String text) {
         return !(text.replaceAll(" ", "").equals(""));
     }
+
+    public static boolean arePasswordsEqual(String password, String passwordrepeat) {
+        return password.equals(passwordrepeat);
+    }
 }
