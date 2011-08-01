@@ -6,9 +6,9 @@ import com.sigma.qsab.verifiers.RegisterVerifier;
 public class NoFormatCheckForSocialIDGlitch extends Glitch {
 
     private static String shortDesc = "Formateringsfel i personnummer";
-    private static String longDesc = "Kollar inte om personnummerssträngen "
-            + "är rätt formaterad när man registrerar en ny kund, men kollar "
-            + "fortfarande att strängen är rätt enl. Luhns algoritm.";
+    private static String longDesc = "Kollar inte om personnummersstr\u00e4ngen "
+            + "\u00e4r r\u00e4tt formaterad n\u00e4r man registrerar en ny kund, men kollar "
+            + "fortfarande att str\u00e4ngen \u00e4r r\u00e4tt enl. Luhns algoritm.";
 
     public NoFormatCheckForSocialIDGlitch() {
         super(shortDesc, longDesc, REGISTER_SOCIALIDGLITCH);
