@@ -1,7 +1,6 @@
 package com.sigma.qsab.glitches.customglitches;
 
 import com.sigma.qsab.glitches.Glitch;
-import com.sigma.qsab.verifiers.RegisterVerifier;
 
 public class DoNotComparePasswordsGlitch extends Glitch {
 

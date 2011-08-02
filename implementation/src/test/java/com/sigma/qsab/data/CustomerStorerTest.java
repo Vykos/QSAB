@@ -1,7 +1,5 @@
-package com.sigma.qsab.verifiers.data;
+package com.sigma.qsab.data;
 
-import com.sigma.qsab.data.Customer;
-import com.sigma.qsab.data.CustomerStorer;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
