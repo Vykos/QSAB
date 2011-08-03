@@ -10,73 +10,73 @@ public class CustomerStorerTest {
     @Test
     public void newCustomerTest() {
         boolean expected = true;
-        CustomerStorer customers = new CustomerStorer();
+        CustomerStorer customers = new CustomerStorerImpl();
         Customer c = createTestCustomer();
-        customers.put(c);
-        boolean actual = customers.contains(c);
+        customers.addCustomer(c);
+        boolean actual = customers.containsCustomer(c);
         assertThat(actual, is(expected));
     }
 
     @Test
     public void notEqualsAnotherCustomer() {
         boolean expected = false;
-        CustomerStorer customers = new CustomerStorer();
-        customers.put(createTestCustomer());
-        boolean actual = customers.contains(createAnotherTestCustomer());
+        CustomerStorer customers = new CustomerStorerImpl();
+        customers.addCustomer(createTestCustomer());
+        boolean actual = customers.containsCustomer(createAnotherTestCustomer());
         assertThat(actual, is(expected));
     }
 
     @Test
     public void notEqualsAnotherCustomerWithSameID() {
         boolean expected = false;
-        CustomerStorer customers = new CustomerStorer();
-        customers.put(createTestCustomer());
-        boolean actual = customers.contains(createAnotherTestCustomerWithSameIDAsFirstTestCustomer());
+        CustomerStorer customers = new CustomerStorerImpl();
+        customers.addCustomer(createTestCustomer());
+        boolean actual = customers.containsCustomer(createAnotherTestCustomerWithSameIDAsFirstTestCustomer());
         assertThat(actual, is(expected));
     }
 
     @Test
     public void shouldNotReplaceCustomer() {
         boolean expected = false;
-        CustomerStorer customers = new CustomerStorer();
-        customers.put(createTestCustomer());
-        Customer c = customers.put(createAnotherTestCustomerWithSameIDAsFirstTestCustomer());
-        customers.put(c);
-        boolean actual = customers.contains(c);
+        CustomerStorer customers = new CustomerStorerImpl();
+        customers.addCustomer(createTestCustomer());
+        Customer c = createAnotherTestCustomerWithSameIDAsFirstTestCustomer();
+        customers.addCustomer(c);
+        boolean actual = customers.containsCustomer(c);
         assertThat(actual, is(expected));
     }
     
     @Test
     public void testAddingTwoCustomers() {
         boolean expected = true;
-        CustomerStorer customers = new CustomerStorer();
+        CustomerStorer customers = new CustomerStorerImpl();
         Customer c1 = createTestCustomer();
         Customer c2 = createAnotherTestCustomer();
-        customers.put(c1);
-        customers.put(c2);
-        boolean actual = customers.contains(c1);
+        customers.addCustomer(c1);
+        customers.addCustomer(c2);
+        boolean actual = customers.containsCustomer(c1);
         assertThat(actual, is(expected));
-        actual = customers.contains(c2);
+        actual = customers.containsCustomer(c2);
         assertThat(actual, is(expected));
     }
 
     private Customer createTestCustomer() {
         Customer c = new Customer("Test", "Testsson", "121212-1212",
-                "Testvägen", "12345", "Testort", "08-123456", "073-1234567",
+                "Testgatan", "12345", "Testort", "08-123456", "073-1234567",
                 "test@test.com", "testpwd");
         return c;
     }
 
     private Customer createAnotherTestCustomer() {
         Customer c = new Customer("Test", "Testsson", "121212-1113",
-                "Testvägen", "12345", "Testort", "08-123456", "073-1234567",
+                "Testgatan", "12345", "Testort", "08-123456", "073-1234567",
                 "test@test.com", "testpwd");
         return c;
     }
 
     private Customer createAnotherTestCustomerWithSameIDAsFirstTestCustomer() {
         Customer c = new Customer("AnnanKund", "MedSammaID", "121212-1212",
-                "Testvägen", "12345", "Testort", "08-123456", "073-1234567",
+                "Testgatan", "12345", "Testort", "08-123456", "073-1234567",
                 "test@test.com", "testpwd");
         return c;
     }
