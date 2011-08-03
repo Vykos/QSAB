@@ -79,7 +79,7 @@ public class RegisterTest {
         firstname = "Test";
         lastname = "Testsson";
         socialID = "121212-1212";
-        street = "Testvägen 55";
+        street = "Testgatan 55";
         zipCode = "12345";
         city = "Testort";
         phone = "08-123456";
