@@ -1,6 +1,7 @@
 package com.sigma.qsab.gui;
 
 import com.sigma.qsab.data.CustomerStorer;
+import com.sigma.qsab.data.CustomerStorerImpl;
 import com.sigma.qsab.exceptions.IncorrectGlitchException;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -61,13 +62,13 @@ public class MainFrame extends JFrame implements ActionListener {
             if (registerPanel.isComponentsEditable()) {
                 registerPanel.setAllFieldsError(false);
                 if (registerPanel.isFilledOutCorrectly()) {
-                    customers.put(registerPanel.getCustomer());
+                    customers.addCustomer(registerPanel.getCustomer());
                     registerPanel.setComponentsEditable(false);
                 } else {
                     JOptionPane.showMessageDialog(this, strings.getString(GUIStrings.REGISTERERRORMESSAGE));
                 }
             } else {
-                System.out.println("Nu borde den gå vidare med en ny användare");
+                System.out.println("Nu borde den gå vidare med en ny anv\u00e4ndare");
             }
         } else if (action.equals("register_previous")) {
             if (registerPanel.isComponentsEditable()) {
@@ -128,7 +129,7 @@ public class MainFrame extends JFrame implements ActionListener {
         addPanelsToContainer(welcomePanel, superAdminSetupPanel, registerPanel);
     }
 
-    private CustomerStorer loadCustomers() {
-        return new CustomerStorer();
+    private CustomerStorerImpl loadCustomers() {
+        return new CustomerStorerImpl();
     }
 }
