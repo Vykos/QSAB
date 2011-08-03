@@ -99,6 +99,6 @@ public class RegisterComponent<F extends JTextField> {
     }
     
     public void setFieldError(boolean isError) {
-        field.setBackground(isError ? GUIFields.ERRORCOLOR : GUIFields.BGCOLOR);
+        titleLabel.setForeground(isError ? GUIFields.ERRORCOLOR : GUIFields.FGCOLOR);
     }
 }
