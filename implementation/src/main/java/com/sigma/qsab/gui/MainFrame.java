@@ -1,5 +1,6 @@
 package com.sigma.qsab.gui;
 
+import com.sigma.qsab.data.Customer;
 import com.sigma.qsab.data.CustomerStorer;
 import com.sigma.qsab.data.CustomerStorerImpl;
 import com.sigma.qsab.exceptions.IncorrectGlitchException;
@@ -15,8 +16,10 @@ import javax.swing.JPanel;
 public class MainFrame extends JFrame implements ActionListener {
     
     private Container container;
+    private LoginPanel loginPanel;
     private RegisterPanel registerPanel;
     private SuperAdminSetupPanel superAdminSetupPanel;
+    private ViewCustomerPanel viewCustomerPanel;
     private WelcomePanel welcomePanel;    
     private GUIStrings strings;
     private CustomerStorer customers;
@@ -43,7 +46,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
         welcomePanel = new WelcomePanel(new ImageIcon(getClass().getResource(
                 "/login.png")).getImage(), strings, this);
-        superAdminSetupPanel = new SuperAdminSetupPanel(strings, this);
+        superAdminSetupPanel = new SuperAdminSetupPanel(strings, this);        
         setBoundsForPanels(welcomePanel, superAdminSetupPanel);
         makePanelsInvisible(superAdminSetupPanel);
         makePanels();
@@ -58,7 +61,21 @@ public class MainFrame extends JFrame implements ActionListener {
     @SuppressWarnings("CallToThreadDumpStack")
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
-        if (action.equals("register_next")) {
+        if (action.equals("login_next")) {
+            String id = loginPanel.getSocialID();
+            Customer customer = customers.findCustomer(id);
+            if (customer != null) {
+                //check password
+                viewCustomerPanel.setCustomer(customer);
+                hideAllPanels();
+                viewCustomerPanel.setVisible(true);                                
+            } else {
+                //Handle user not found
+            }
+        } else if (action.equals("login_previous")) {
+            hideAllPanels();
+            welcomePanel.setVisible(true);         
+        } else if (action.equals("register_next")) {
             if (registerPanel.isComponentsEditable()) {
                 registerPanel.setAllFieldsError(false);
                 if (registerPanel.isFilledOutCorrectly()) {
@@ -93,14 +110,16 @@ public class MainFrame extends JFrame implements ActionListener {
             hideAllPanels();
             registerPanel.setVisible(true);
         } else if (action.equals("welcome_login")) {
-            //login panel show ish
+            hideAllPanels();
+            loginPanel.setVisible(true);
             System.out.println(customers.toString());
-        }
+        }                
 
     }
 
     private void hideAllPanels() {
-        makePanelsInvisible(welcomePanel, registerPanel, superAdminSetupPanel);        
+        makePanelsInvisible(welcomePanel, registerPanel, superAdminSetupPanel, 
+                loginPanel, viewCustomerPanel);        
     }
 
     private void setBoundsForPanels(JPanel... panels) {
@@ -124,9 +143,12 @@ public class MainFrame extends JFrame implements ActionListener {
     private void makePanels() {
         container.removeAll();
         registerPanel = new RegisterPanel(strings, this);                
-        setBoundsForPanels(registerPanel);
-        makePanelsInvisible(registerPanel);
-        addPanelsToContainer(welcomePanel, superAdminSetupPanel, registerPanel);
+        loginPanel = new LoginPanel(strings, this);
+        viewCustomerPanel = new ViewCustomerPanel(strings, this);
+        setBoundsForPanels(registerPanel, loginPanel, viewCustomerPanel);
+        makePanelsInvisible(registerPanel, loginPanel, viewCustomerPanel);
+        addPanelsToContainer(welcomePanel, superAdminSetupPanel, registerPanel,
+                loginPanel, viewCustomerPanel);
     }
 
     private CustomerStorerImpl loadCustomers() {

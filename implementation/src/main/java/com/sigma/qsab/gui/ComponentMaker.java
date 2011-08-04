@@ -2,11 +2,16 @@ package com.sigma.qsab.gui;
 
 import com.sigma.qsab.glitches.Glitch;
 import com.sigma.qsab.glitches.GlitchManagersSingleton;
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class ComponentMaker {
 
@@ -73,10 +78,46 @@ public class ComponentMaker {
         return list;
     }
 
-    static JScrollPane makeGlitchCheckListScrollPane(CheckList list) {
+    public static JScrollPane makeGlitchCheckListScrollPane(CheckList list) {
         JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setBounds(GUIFields.X_SUPERADMINLIST, GUIFields.Y_SUPERADMINLIST,
                 GUIFields.W_SUPERADMINLIST, GUIFields.H_SUPERADMINLIST);
         return scrollPane;
+    }
+    
+    public static JLabel makeLabel(String text, Point position) {
+        JLabel label = new JLabel(text);
+        label.setBackground(GUIFields.BGCOLOR);
+        label.setBounds(position.x,
+                position.y, GUIFields.W_LABEL, GUIFields.H_LABEL);
+        label.setName("label_" + text);
+        return label;
+    }
+    
+    public static JTextField makeTextField(String text, Point position, String name) {
+        JTextField field = new JTextField(text);
+        field.setBackground(GUIFields.BGCOLOR);
+        field.setBounds(position.x, position.y, 
+                GUIFields.W_TEXTFIELD, GUIFields.H_TEXTFIELD);        
+        field.setName(name);
+        return field;
+    }
+    
+    public static JPasswordField makePasswordField(String text, Point position, String name) {
+        JPasswordField field = new JPasswordField(text);
+        field.setBackground(GUIFields.BGCOLOR);
+        field.setBounds(position.x,position.y, 
+                GUIFields.W_TEXTFIELD, GUIFields.H_TEXTFIELD);
+        field.setName(name);
+        return field;
+    }
+
+    public static JTextArea makeTextArea(String text, Point position, String name) {
+        JTextArea area = new JTextArea();
+        area.setBackground(GUIFields.BGCOLOR);
+        area.setBounds(position.x, position.y, 
+                GUIFields.W_TEXTAREA, GUIFields.H_TEXTAREA);
+        area.setName(name);
+        return area;
     }
 }

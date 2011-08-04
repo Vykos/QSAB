@@ -5,6 +5,7 @@ import java.util.Properties;
 
 public class GUIStrings {
     public final static String LOGIN = "login";
+    public final static String LOGOUT = "logout";
     public final static String REGISTER = "register";
     public final static String FIRSTNAME = "firstname";
     public final static String LASTNAME = "lastname";

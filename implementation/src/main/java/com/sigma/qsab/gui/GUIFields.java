@@ -12,6 +12,8 @@ public abstract class GUIFields {
     public final static int H_BUTTON = 30; 
     public final static int W_LABEL = 180;
     public final static int H_LABEL = 30;
+    public final static int W_TEXTAREA = 400;
+    public final static int H_TEXTAREA = 600;
     public final static int W_TEXTFIELD = 180;
     public final static int H_TEXTFIELD = 30;
     public final static int VERTICALGAP = 20;
