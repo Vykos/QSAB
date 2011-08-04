@@ -1,8 +1,9 @@
 package com.sigma.qsab.data;
 
 public class Customer {
-    private String firstname;
-    private String lastname;
+
+    private String firstName;
+    private String lastName;
     private String socialID;
     private String street;
     private String zipCode;
@@ -12,9 +13,9 @@ public class Customer {
     private String email;
     private String password;
 
-    public Customer(String firstname, String lastname, String socialID, String street, String zipCode, String city, String phone, String cellPhone, String email, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public Customer(String firstName, String lastName, String socialID, String street, String zipCode, String city, String phone, String cellPhone, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.socialID = socialID;
         this.street = street;
         this.zipCode = zipCode;
@@ -37,12 +38,12 @@ public class Customer {
         return email;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getPassword() {
@@ -74,10 +75,10 @@ public class Customer {
             return false;
         }
         final Customer other = (Customer) obj;
-        if ((this.firstname == null) ? (other.firstname != null) : !this.firstname.equals(other.firstname)) {
+        if ((this.firstName == null) ? (other.firstName != null) : !this.firstName.equals(other.firstName)) {
             return false;
         }
-        if ((this.lastname == null) ? (other.lastname != null) : !this.lastname.equals(other.lastname)) {
+        if ((this.lastName == null) ? (other.lastName != null) : !this.lastName.equals(other.lastName)) {
             return false;
         }
         if ((this.socialID == null) ? (other.socialID != null) : !this.socialID.equals(other.socialID)) {
@@ -110,8 +111,8 @@ public class Customer {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 89 * hash + (this.firstname != null ? this.firstname.hashCode() : 0);
-        hash = 89 * hash + (this.lastname != null ? this.lastname.hashCode() : 0);
+        hash = 89 * hash + (this.firstName != null ? this.firstName.hashCode() : 0);
+        hash = 89 * hash + (this.lastName != null ? this.lastName.hashCode() : 0);
         hash = 89 * hash + (this.socialID != null ? this.socialID.hashCode() : 0);
         hash = 89 * hash + (this.street != null ? this.street.hashCode() : 0);
         hash = 89 * hash + (this.zipCode != null ? this.zipCode.hashCode() : 0);
@@ -122,6 +123,15 @@ public class Customer {
         hash = 89 * hash + (this.password != null ? this.password.hashCode() : 0);
         return hash;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();        
+        sb.append("Customer: ").append(getSocialID()).append('\n');
+        sb.append("Name: ").append(getFirstName()).append(' ').append(getLastName()).append('\n');
+        sb.append("Address: ").append(getStreet()).append(", ").append(getZipCode()).append(' ').append(getCity()).append('\n');
+        sb.append("Phone numbers: ").append(getPhone()).append(", ").append(getCellPhone()).append('\n');
+        sb.append("Email: ").append(getEmail()).append('\n');
+        return sb.toString ();
+    }
 }

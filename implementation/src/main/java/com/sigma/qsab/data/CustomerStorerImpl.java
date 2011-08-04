@@ -43,7 +43,7 @@ public class CustomerStorerImpl implements CustomerStorer {
 
     @Override
     public Customer findCustomer(String socialID) {
-        if (socialID == null) return null;
+        if (socialID == null) return null;        
         return customers.get(socialID);
     }
 
@@ -55,35 +55,7 @@ public class CustomerStorerImpl implements CustomerStorer {
         if (addCustomer(customer)) return true;
         addCustomer(oldCustomer);
         return false;
-    }
-    
-    /*public Customer put(String socialID, Customer customer) {
-        if (containsKey(socialID)) return customer; //don't overwrite!
-        Customer previousValue = super.put(socialID, customer);
-        //Save to disk
-        return previousValue;
-    }
-
-    public Customer put(Customer customer) {
-        return put(customer.getSocialID(), customer);
-    }
-
-    
-    public void putAll(Map<? extends String, ? extends Customer> customers) {
-        super.putAll(customers);
-        //Save to disk
-    }
-
-    
-    public Customer remove(Object key) {
-        return remove((String) key);
-    }
-
-    public Customer remove(String socialID) {
-        Customer previousValue = super.remove(socialID);
-        //Save to disk
-        return previousValue;
-    }*/
+    }   
 
     @Override
     public String toString() {
@@ -91,7 +63,7 @@ public class CustomerStorerImpl implements CustomerStorer {
         for (String key : customers.keySet()) {
             Customer c = customers.get(key);
             sb.append("Customer: ").append(c.getSocialID()).append('\n');
-            sb.append("Name: ").append(c.getFirstname()).append(' ').append(c.getLastname()).append('\n');
+            sb.append("Name: ").append(c.getFirstName()).append(' ').append(c.getLastName()).append('\n');
             sb.append("Address: ").append(c.getStreet()).append(", ").append(c.getZipCode()).append(' ').append(c.getCity()).append('\n');
             sb.append("Phone numbers: ").append(c.getPhone()).append(", ").append(c.getCellPhone()).append('\n');
             sb.append("Email: ").append(c.getEmail()).append('\n');
