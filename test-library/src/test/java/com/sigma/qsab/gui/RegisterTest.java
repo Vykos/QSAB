@@ -46,6 +46,16 @@ public class RegisterTest {
         runner.pause(1000);
 
         assertForm();
+        
+        runner.clickButton("register_previous");
+        runner.clickButton("register_previous");
+        runner.clickButton("welcome_login");
+        
+        login();
+        
+        runner.clickButton("login_next");
+        
+        runner.pause(3000);
     }
 
     @Test
@@ -63,6 +73,12 @@ public class RegisterTest {
         runner.clickButton("register_previous");
         runner.clickButton("register_previous");
         runner.clickButton("welcome_login");
+        
+        login();
+        
+        runner.clickButton("login_next");
+        
+        runner.pause(3000);
     }
 
     private void selectGlitch() {
@@ -111,5 +127,9 @@ public class RegisterTest {
         runner.assertCellPhoneNumber(cellPhone);
         runner.assertEmail(email);
         runner.assertPasswords(password);
+    }
+
+    private void login() {
+        runner.login(socialID, password);
     }
 }

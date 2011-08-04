@@ -145,4 +145,9 @@ button = window.button(matcher);
         window.label("text_" + gs.getString(GUIStrings.PASSWORD)).requireText(password);
         window.label("text_" + gs.getString(GUIStrings.PASSWORDREPEAT)).requireText(password);
     }
+
+    public void login(String socialID, String password) {
+        window.textBox("field_" + gs.getString(GUIStrings.SOCIALID)).setText(socialID);
+        window.textBox("field_" + gs.getString(GUIStrings.PASSWORD)).setText(password);
+    }
 }
