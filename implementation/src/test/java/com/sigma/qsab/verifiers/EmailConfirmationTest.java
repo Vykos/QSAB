@@ -69,7 +69,7 @@ public class EmailConfirmationTest {
     
     @Test
     public void verifyIncorrectEmailWithUnallowedLocalChar() {
-        String sample = "not¤anemail@address.either";
+        String sample = "not,anemail@address.either";
         boolean expected = false;
 
         boolean actual = RegisterVerifier.isEmailCorrect(sample);
