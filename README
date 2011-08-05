@@ -1,5 +1,25 @@
 Att göra:
 
+2011-08-12
+
+* Planera möte med Andreas på Nada för att bolla problemet med problemdefinitionen
+
+* Rapport   - Skriv om problemdefinitionen
+            - Städa bland rubriker
+            - Börja på Historia
+            - Diskutera varför mutationer inte går att använda hur som helst
+            - Implementation, vad är en Glitch, hur är dom implementerade, hur lägger man till en ny
+            - Litteraturlistan - Mutationer, böckerna
+
+* Applikationen - Knappars logik
+                - Städa MainFrame.actionPerformed()
+                - Kolla lösenordet när man loggar in
+                - Bokningsformulär
+                - Spara data till fil (Kundinformation, bokningar etc)
+                - Kolla Nadines önskelista efter fler roliga saker att skapa
+                - Kolla å, ä, ö, Å, Ä, Ö och skriv med UTF-8 encoding
+
+
 2011-08-05
 
 Problembeskrivning i rapporten
