@@ -6,11 +6,6 @@ import java.util.Map;
 public class CustomerStorerImpl implements CustomerStorer {
     
     private Map<String, Customer> customers ;
-    
-    public CustomerStorerImpl(Map<? extends String, ? extends Customer> m) {
-        customers = new HashMap<String, Customer>();
-        customers.putAll(m);
-    }
 
     public CustomerStorerImpl() {
         customers = new HashMap<String, Customer>();
