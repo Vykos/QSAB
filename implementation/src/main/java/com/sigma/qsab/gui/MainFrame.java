@@ -158,7 +158,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 showMessageDialog(GUIStrings.REGISTERERRORMESSAGE);
             }
         } else {
-            System.out.println("Nu borde den gå vidare med en ny anv\u00e4ndare");
+            System.out.println("Nu borde den g\u00e5 vidare med en ny anv\u00e4ndare");
         }
     }
 
