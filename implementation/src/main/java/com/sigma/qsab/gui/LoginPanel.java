@@ -13,8 +13,8 @@ public class LoginPanel extends JPanel {
     private final static int x = GUIFields.W_APP/2 - (GUIFields.W_LABEL + v_gap)/2;
     private final static int y = GUIFields.H_APP/2 - (GUIFields.H_LABEL + h_gap)/2;
     
-    JTextField socialIDField;
-    JPasswordField passwordField;       
+    private JTextField socialIDField;
+    private JPasswordField passwordField;       
  
     public LoginPanel(GUIStrings strings, ActionListener al) {        
         setBackground(GUIFields.BGCOLOR);

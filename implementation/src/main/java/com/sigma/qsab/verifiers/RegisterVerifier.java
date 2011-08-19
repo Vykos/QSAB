@@ -1,10 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.sigma.qsab.verifiers;
 
-import com.sigma.qsab.gui.RegisterComponent;
+package com.sigma.qsab.verifiers;
 
 public class RegisterVerifier {
 

@@ -6,6 +6,7 @@ import java.util.Properties;
 public class GUIStrings {
     public final static String LOGIN = "login";
     public final static String LOGOUT = "logout";
+    public final static String CANCEL = "cancel";
     public final static String REGISTER = "register";
     public final static String FIRSTNAME = "firstname";
     public final static String LASTNAME = "lastname";
@@ -21,8 +22,10 @@ public class GUIStrings {
     public final static String NEXT = "next";
     public final static String PREVIOUS = "previous";
     public final static String SUPERADMINACCEPT = "superadminaccept";
-    public final static String REGISTERERRORMESSAGE = "registererrormessage";
     public final static String CHOOSEGLITCHES = "chooseglitches";
+    public final static String REGISTERERRORMESSAGE = "registererrormessage";
+    public final static String LOGINERRORMESSAGE = "loginerrormessage";
+    
         
     private Properties strings;
     
