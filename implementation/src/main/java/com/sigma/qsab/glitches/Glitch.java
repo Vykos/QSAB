@@ -7,6 +7,7 @@ public abstract class Glitch implements Comparable<Glitch> {
     public static int REGISTER_VERIFYGLITCH = 1002;
     public static int REGISTER_ISMANDATORYGLITCH = 1003;
     public static int REGISTER_AREPASSWORDSEQUALGLITCH = 1004;
+    public static int LOGIN_AREPASSWORDSEQUALGLITCH = 1005;
     public static int FUNCTIONMAX = 1999;
     public static int GUIMIN = 2000;
     public static int TEXTFIELDGLITCH = 2001;

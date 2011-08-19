@@ -1,5 +1,6 @@
 package com.sigma.qsab.glitches;
 
+import com.sigma.qsab.verifiers.LoginVerifier;
 import com.sigma.qsab.verifiers.RegisterVerifier;
 
 public class FunctionGlitchManager extends GlitchManager {
@@ -33,5 +34,14 @@ public class FunctionGlitchManager extends GlitchManager {
             return (Boolean) glitch.performGlitch(password, passwordrepeat);
         }
         return RegisterVerifier.arePasswordsEqual(password, passwordrepeat);
+    }
+
+    public boolean compareLoginPasswords(String attemptedPassword, String storedPassword) {
+        Glitch glitch = getGlitch(Glitch.LOGIN_AREPASSWORDSEQUALGLITCH);
+        if (glitchExists(glitch)) {
+            //use glitch version
+            return (Boolean) glitch.performGlitch(attemptedPassword, storedPassword);
+        }
+        return LoginVerifier.arePasswordsEqual(attemptedPassword, storedPassword);
     }
 }
