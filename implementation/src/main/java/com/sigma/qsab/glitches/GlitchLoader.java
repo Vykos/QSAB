@@ -19,8 +19,8 @@ public abstract class GlitchLoader {
         ArrayList<Glitch> glitchList = new ArrayList<Glitch>();
         ClassLoader loader = new URLClassLoader(new URL[]{}, Glitch.class.getClassLoader());
         for (String key : glitchMap.stringPropertyNames()) {
-            String glitchName = glitchMap.getProperty(key);
-            Class glitchClass = loadGlitchClass(glitchName, loader);
+            String glitchPath = glitchMap.getProperty(key);
+            Class glitchClass = loadGlitchClass(glitchPath, loader);
             if (glitchClass == null) continue;            
             Glitch glitch = instantiateGlitch(glitchClass);
             if (glitch == null) continue;            
@@ -87,11 +87,11 @@ public abstract class GlitchLoader {
         return glitchList;
     }
 
-    private static Class loadGlitchClass(String glitchName, ClassLoader loader) {
+    private static Class loadGlitchClass(String glitchPath, ClassLoader loader) {        
         try {            
-            return loader.loadClass("com.sigma.qsab.glitches.customglitches." + glitchName);
+            return loader.loadClass(glitchPath);
         } catch (ClassNotFoundException ex) {
-            System.out.println("Glitch could not be found: " + glitchName);
+            System.out.println("Glitch could not be found: " + glitchPath);
         }
         return null;
     }
