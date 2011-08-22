@@ -10,11 +10,14 @@ import java.util.logging.Logger;
 
 public class GlitchListGenerator {
 
-    String relativeGlitchPath = "../implementation/src/main/java/com/sigma/qsab/glitches/customglitches/";
-    String relativePropertyPath = "../implementation/src/main/resources/glitches.properties";
+    String relativeGlitchPath = "implementation/src/main/java/com/sigma/qsab/glitches/customglitches/";
+    String relativePropertyPath = "implementation/src/main/resources/glitches.properties";
     ArrayList<String> glitchPathList;
 
     public GlitchListGenerator() {
+        System.out.println("===============================");
+        System.out.println((new File(".")).getAbsolutePath());
+        System.out.println("===============================");
         File glitchDirectory = new File(relativeGlitchPath);
         File[] files = glitchDirectory.listFiles();
         glitchPathList = generateFileList(files);
@@ -44,7 +47,7 @@ public class GlitchListGenerator {
                 resultList.addAll(generateFileList(file.listFiles()));
             } else if (file.getName().endsWith(".java")) {
                 String path = file.getPath();
-                path = path.substring(32, path.length() - 5);
+                path = path.substring(29, path.length() - 5);
                 path = path.replace(File.separator, ".");
                 resultList.add(path);
             }
