@@ -5,8 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GlitchListGenerator {
 
@@ -14,16 +12,11 @@ public class GlitchListGenerator {
     String relativePropertyPath = "implementation/src/main/resources/glitches.properties";
     ArrayList<String> glitchPathList;
 
+    @SuppressWarnings("CallToThreadDumpStack")
     public GlitchListGenerator() {
-        System.out.println("===============================");
-        System.out.println((new File(".")).getAbsolutePath());
-        System.out.println("===============================");
         File glitchDirectory = new File(relativeGlitchPath);
         File[] files = glitchDirectory.listFiles();
         glitchPathList = generateFileList(files);
-        for (String glitchPath : glitchPathList) {
-            System.out.println(glitchPath);
-        }
         File propertyFile = new File(relativePropertyPath);
         if (propertyFile.exists()) {
             propertyFile.delete();
@@ -31,12 +24,11 @@ public class GlitchListGenerator {
         Properties properties = new Properties();
         for (int i = 0; i < glitchPathList.size(); i++) {            
             properties.setProperty("" + i, glitchPathList.get(i));
-            System.out.println(properties.getProperty("" + i));
         }
         try {
             properties.store(new FileOutputStream(propertyFile), "List of custom glitches.");
         } catch (IOException ex) {
-            Logger.getLogger(GlitchListGenerator.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }        
     }
 
