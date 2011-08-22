@@ -1,5 +1,42 @@
 Att göra:
 
+2011-08-26
+
+* Meddelar omgivningen nya problemdefinitionen
+    * Stefan
+    * Anders & Erik
+
+* Verktyg
+    * Hitta alternativ som kan testa Swing gui
+        * FEST
+        * Fler
+
+    * Hitta alternativ som kan driva testerna
+
+        * JUnit – http://junit.org
+        * Tumbler - http://code.google.com/p/tumbler-glass/
+        * Concordion - http://www.concordion.org/
+        * Fitnesse - http://www.fitnesse.org/
+        * Robot Framework - http://code.google.com/p/robotframework/
+        * JBehave - http://jbehave.org/
+        * Cucumber - http://cuke4ninja.com/
+        * Fler?
+
+* Rapport   - Städa bland rubriker
+            - Städa i innehållet
+            - Mer?
+
+            - Spar text du vill ha kvar i en skuggrapport
+
+
+* Applikationen - Knappars logik
+                - Städa MainFrame.actionPerformed()
+                - Bokningsformulär
+                - Spara data till fil (Kundinformation, bokningar etc)
+                - Kolla Nadines önskelista efter fler roliga saker att skapa
+
+
+
 2011-08-12
 
 * Planera möte med Andreas på Nada för att bolla problemet med problemdefinitionen
