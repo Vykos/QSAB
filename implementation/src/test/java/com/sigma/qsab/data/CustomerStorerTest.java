@@ -61,7 +61,7 @@ public class CustomerStorerTest {
     }
 
     private Customer createTestCustomer() {
-        Customer c = new Customer("Test", "Testsson", "121212-1212",
+        Customer c = new Customer("Test", "Testsson", "121212-1311",
                 "Testgatan", "12345", "Testort", "08-123456", "073-1234567",
                 "test@test.com", "testpwd");
         return c;
@@ -75,7 +75,7 @@ public class CustomerStorerTest {
     }
 
     private Customer createAnotherTestCustomerWithSameIDAsFirstTestCustomer() {
-        Customer c = new Customer("AnnanKund", "MedSammaID", "121212-1212",
+        Customer c = new Customer("AnnanKund", "MedSammaID", "121212-1311",
                 "Testgatan", "12345", "Testort", "08-123456", "073-1234567",
                 "test@test.com", "testpwd");
         return c;

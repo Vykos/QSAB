@@ -25,6 +25,7 @@ public class GUIStrings {
     public final static String CHOOSEGLITCHES = "chooseglitches";
     public final static String REGISTERERRORMESSAGE = "registererrormessage";
     public final static String LOGINERRORMESSAGE = "loginerrormessage";
+    public final static String USERALREADYEXISTS = "useralreadyexists";
     
         
     private Properties strings;

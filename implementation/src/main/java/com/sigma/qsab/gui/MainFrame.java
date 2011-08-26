@@ -152,7 +152,11 @@ public class MainFrame extends JFrame implements ActionListener {
         if (registerPanel.isComponentsEditable()) {
             registerPanel.setAllFieldsError(false);
             if (registerPanel.isFilledOutCorrectly()) {
-                customers.addCustomer(registerPanel.getCustomer());
+                if(!customers.addCustomer(registerPanel.getCustomer())) {
+                    //showMessageDialog(GUIStrings.USERALREADYEXISTS);
+                    System.out.println("Can't create customer:");
+                    System.out.println(registerPanel.getCustomer().toString());
+                }
                 registerPanel.setComponentsEditable(false);
             } else {
                 showMessageDialog(GUIStrings.REGISTERERRORMESSAGE);
