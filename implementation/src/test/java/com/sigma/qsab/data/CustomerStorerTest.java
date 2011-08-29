@@ -1,11 +1,20 @@
 package com.sigma.qsab.data;
 
+import org.junit.After;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class CustomerStorerTest {
+    
+    @After
+    public void cleanDataBeforeEveryTest() {
+        CustomerStorer customers = new CustomerStorerImpl();
+        customers.deleteCustomer(createTestCustomer());
+        customers.deleteCustomer(createAnotherTestCustomer());
+        customers.deleteCustomer(createAnotherTestCustomerWithSameIDAsFirstTestCustomer());
+    }
 
     @Test
     public void newCustomerTest() {
@@ -57,7 +66,7 @@ public class CustomerStorerTest {
         boolean actual = customers.containsCustomer(c1);
         assertThat(actual, is(expected));
         actual = customers.containsCustomer(c2);
-        assertThat(actual, is(expected));
+        assertThat(actual, is(expected));       
     }
 
     private Customer createTestCustomer() {

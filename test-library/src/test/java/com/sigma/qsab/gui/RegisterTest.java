@@ -1,5 +1,8 @@
 package com.sigma.qsab.gui;
 
+import com.sigma.qsab.data.Customer;
+import com.sigma.qsab.data.CustomerStorer;
+import com.sigma.qsab.data.CustomerStorerImpl;
 import com.sigma.qsab.gui.runner.GUITestRunner;
 
 import org.junit.After;
@@ -10,8 +13,8 @@ import org.junit.Test;
 public class RegisterTest {
 
     private static GUITestRunner runner;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String socialID;
     private String street;
     private String zipCode;
@@ -23,17 +26,18 @@ public class RegisterTest {
 
     @BeforeClass
     public static void setUpOnce() {
-        runner = new GUITestRunner();
+        runner = new GUITestRunner();        
     }
 
     @Before
     public void setUp() {
-        runner.initiate();
+        runner.initiate();                  
     }
 
     @After
     public void tearDown() {
         runner.tearDown();
+        cleanCustomersData();     
     }
 
     @Test
@@ -92,8 +96,8 @@ public class RegisterTest {
     }
 
     private void prepareStrings() {
-        firstname = "Test";
-        lastname = "Testsson";
+        firstName = "Test";
+        lastName = "Testsson";
         socialID = "121212-1212";
         street = "Testgatan 55";
         zipCode = "12345";
@@ -110,7 +114,7 @@ public class RegisterTest {
     }
 
     private void fillOutForm() {
-        runner.fillInName(firstname, lastname);
+        runner.fillInName(firstName, lastName);
         runner.fillInSocialID(socialID);
         runner.fillInAddress(street, zipCode, city);
         runner.fillInPhoneNumber(phone);
@@ -120,7 +124,7 @@ public class RegisterTest {
     }
 
     private void assertForm() {
-        runner.assertName(firstname, lastname);
+        runner.assertName(firstName, lastName);
         runner.assertSocialID(socialID);
         runner.assertAddress(street, zipCode, city);
         runner.assertPhoneNumber(phone);
@@ -131,5 +135,17 @@ public class RegisterTest {
 
     private void login() {
         runner.login(socialID, password);
+    }
+
+    private void cleanCustomersData() {
+        prepareStrings();
+        CustomerStorer customers = new CustomerStorerImpl();
+        Customer customer = new Customer(firstName, lastName, socialID, street, zipCode, city, phone, cellPhone, email, password);
+        if (customers.deleteCustomer(customer))
+            System.out.println("Deleted customer:\n" + customer);
+        prepareErroneousStrings();
+        customer = new Customer(firstName, lastName, socialID, street, zipCode, city, phone, cellPhone, email, password);
+        if (customers.deleteCustomer(customer))
+            System.out.println("Deleted customer:\n" + customer);
     }
 }
