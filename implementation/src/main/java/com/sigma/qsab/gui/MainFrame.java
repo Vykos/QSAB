@@ -25,10 +25,6 @@ public class MainFrame extends JFrame implements ActionListener {
     private GUIStrings strings;
     private CustomerStorer customers;
 
-    public MainFrame() {
-        this("No title");
-    }
-
     @SuppressWarnings("CallToThreadDumpStack")
     public MainFrame(String title) {
         super(title);
