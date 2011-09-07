@@ -3,7 +3,8 @@ package com.sigma.qsab.gui;
 import com.sigma.qsab.data.Customer;
 import com.sigma.qsab.data.CustomerStorer;
 import com.sigma.qsab.data.CustomerStorerImpl;
-import com.sigma.qsab.gui.runner.GUITestRunner;
+import com.sigma.qsab.gui.runner.FESTGUIRunner;
+import com.sigma.qsab.gui.runner.GUIRunner;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,7 +13,7 @@ import org.junit.Test;
 
 public class RegisterTest {
 
-    private static GUITestRunner runner;
+    private static GUIRunner runner;
     private String firstName;
     private String lastName;
     private String socialID;
@@ -26,7 +27,7 @@ public class RegisterTest {
 
     @BeforeClass
     public static void setUpOnce() {
-        runner = new GUITestRunner();        
+        runner = new FESTGUIRunner();        
     }
 
     @Before
