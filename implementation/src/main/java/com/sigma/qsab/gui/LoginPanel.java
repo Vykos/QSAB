@@ -29,7 +29,7 @@ public class LoginPanel extends JPanel {
         add(passwordField);
         add(ComponentMaker.makeStandardButton(strings.getString(GUIStrings.LOGIN),
                 new Point(774, 688), al, "login_next"));
-        add(ComponentMaker.makeStandardButton(strings.getString(GUIStrings.PREVIOUS),
+        add(ComponentMaker.makeStandardButton(strings.getString(GUIStrings.CANCEL),
                 new Point(64, 688), al, "login_previous"));        
     }
     
