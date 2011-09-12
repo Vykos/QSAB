@@ -6,7 +6,7 @@ public abstract class GUIRunner {
 
     public abstract void tearDown();    
 
-    public abstract void clickButton(String buttonName);
+    public abstract void clickButton(String buttonText);
 
     public abstract void selectItemFromGlitchList(String item);
 

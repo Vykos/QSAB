@@ -3,8 +3,8 @@ package com.sigma.qsab.gui;
 import com.sigma.qsab.data.Customer;
 import com.sigma.qsab.data.CustomerStorer;
 import com.sigma.qsab.data.CustomerStorerImpl;
-import com.sigma.qsab.gui.runner.FESTGUIRunner;
 import com.sigma.qsab.gui.runner.GUIRunner;
+import com.sigma.qsab.gui.runner.SikuliGUIRunner;
 
 import org.junit.After;
 import org.junit.Before;
@@ -27,7 +27,7 @@ public class RegisterTest {
 
     @BeforeClass
     public static void setUpOnce() {
-        runner = new FESTGUIRunner();        
+        runner = new SikuliGUIRunner();        
     }
 
     @Before
@@ -47,18 +47,18 @@ public class RegisterTest {
         prepareStrings();
         fillOutForm();
 
-        runner.clickButton("register_next");
+        runner.clickButton("Nästa");
         runner.pause(1000);
 
         assertForm();
         
-        runner.clickButton("register_previous");
-        runner.clickButton("register_previous");
-        runner.clickButton("welcome_login");
+        runner.clickButton("Föregående");
+        runner.clickButton("Föregående");
+        runner.clickButton("Logga in");
         
         login();
         
-        runner.clickButton("login_next");
+        runner.clickButton("Logga in");
         
         runner.pause(3000);
     }
@@ -70,30 +70,30 @@ public class RegisterTest {
         prepareErroneousStrings();
         fillOutForm();
 
-        runner.clickButton("register_next");
-        runner.pause(1000);       
+        runner.clickButton("Nästa");
+        runner.pause(1000);
 
         assertForm();
         
-        runner.clickButton("register_previous");
-        runner.clickButton("register_previous");
-        runner.clickButton("welcome_login");
+        runner.clickButton("Föregående");
+        runner.clickButton("Föregående");
+        runner.clickButton("Logga in");
         
         login();
         
-        runner.clickButton("login_next");
+        runner.clickButton("Logga in");
         
         runner.pause(3000);
     }
 
     private void selectGlitch() {
-        runner.clickButton("welcome_superadmin");
+        runner.clickButton("Välj buggar");
         runner.selectItemFromGlitchList("Formateringsfel i personnummer");
-        runner.clickButton("superadmin_accept");
+        runner.clickButton("Applicera valda fel");
     }
 
     private void findForm() {
-        runner.clickButton("welcome_register");
+        runner.clickButton("Ny kund");
     }
 
     private void prepareStrings() {

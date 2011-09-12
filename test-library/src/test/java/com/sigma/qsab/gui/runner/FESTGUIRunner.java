@@ -8,16 +8,17 @@ import org.fest.swing.edt.FailOnThreadViolationRepaintManager;
 import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.fixture.FrameFixture;
-import org.fest.swing.fixture.JButtonFixture;
 
 import java.io.IOException;
+import javax.swing.JButton;
+import org.fest.swing.core.GenericTypeMatcher;
 
 public class FESTGUIRunner extends GUIRunner {
 
     private GUIStrings gs;
     private EmergencyAbortListener listener;
-    private FrameFixture window;                
-    
+    private FrameFixture window;
+
     @Override
     public void initiate() {
         MainFrame frame = GuiActionRunner.execute(new GuiQuery<MainFrame>() {
@@ -38,28 +39,38 @@ public class FESTGUIRunner extends GUIRunner {
     }
 
     @SuppressWarnings("CallToThreadDumpStack")
-    public FESTGUIRunner() {    
+    public FESTGUIRunner() {
         FailOnThreadViolationRepaintManager.install();
         try {
             gs = new GUIStrings("/strings.properties");
         } catch (IOException e) {
             e.printStackTrace();
-        }        
+        }
     }
 
     @Override
-    public void clickButton(String buttonName) {
+    public void clickButton(final String buttonText) {
         /* SKRIV OM SÅ FUNKTIONEN TAR EN KNAPPTEXT ISTÄLLET */
-        JButtonFixture button;
+        /*        JButtonFixture button;
+        
+        button = window.button(buttonText);
+        button.click();*/
+        GenericTypeMatcher<JButton> textMatcher =
+                new GenericTypeMatcher<JButton>(JButton.class) {
 
-        button = window.button(buttonName);
-        button.click();
+                    @Override
+                    protected boolean isMatching(JButton button) {                        
+                        return ((button.isShowing()) &&
+                            (buttonText.equals(button.getText())));                        
+                    }
+                };
+        window.button(textMatcher).click();
     }
-    
+
     @Override
     public void selectItemFromGlitchList(String item) {
         window.list("superadmin_glitchlist").clickItem(item);
-    }        
+    }
 
     @Override
     public void fillInName(String firstname, String lastname) {
