@@ -1,5 +1,20 @@
 Att göra:
 
+
+* Få klart Sikuli
+
+* Parametrisierad JUnit test för att köra med flera olika GUI Drivers
+  http://thomassundberg.wordpress.com/2010/07/11/parameterized-junits-tests/
+
+* Nya moduler för varje GUI driver (FEST, Sikuli, etc)
+
+* Enskild modul för varje test driver (JUnit, Cucumber, RobotFrameWork, ...)
+
+* Nästa verktyg för test driver, Cucumber
+  http://cukes.info/
+  http://cuke4ninja.com/
+
+
 2011-08-26
 
 * Meddelar omgivningen nya problemdefinitionen
