@@ -9,11 +9,10 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
 import org.sikuli.script.Settings;
 
-public class SikuliGUIRunner extends GUIRunner {        
+public class SikuliGUIRunner extends GUIRunner {    
     
     private static final double minimumSimilarityScore = 0.9;
     private static final boolean showActions = true;
-    
     private Screen screen;
     private MainFrame mainFrame;
     private GUIStrings gs;
@@ -64,19 +63,19 @@ public class SikuliGUIRunner extends GUIRunner {
     
     @Override
     public void clickButton(String buttonText) {
-        /*try {
-            screen.click(fullPath(buttonText), 0);
-        } catch (FindFailed ff) {
-            try {
-                screen.click(fullPath("Default"), 0);
-                screen.click(fullPath(buttonText), 0);
-            } catch (FindFailed ex) {}            
-        }*/
-        if (successfullyClickedButton(buttonText)) return;
-        if (successfullyClickedButton(buttonText + " focused")) return;
-        if (successfullyClickedButton(buttonText + " mouseover")) return;
-        if (successfullyClickedButton(buttonText + " focused mouseover")) return;
-        //Maybe do something.
+        if (successfullyClickedButton(buttonText)) {
+            return;
+        }
+        if (successfullyClickedButton(buttonText + " focused")) {
+            return;
+        }
+        if (successfullyClickedButton(buttonText + " mouseover")) {
+            return;
+        }
+        if (successfullyClickedButton(buttonText + " focused mouseover")) {
+            return;
+        }
+        //Nothing found, probably should do something.
     }
     
     @Override
@@ -96,36 +95,36 @@ public class SikuliGUIRunner extends GUIRunner {
             screen.type(fullPath("Mobil"), cellPhoneNumber, 0);
         } catch (FindFailed ff) {
             //Do nothing.
-        } 
+        }        
     }
     
     @Override
     public void fillInEmail(String email) {
         try {
-            screen.paste(fullPath("E-postadress"), email);                          
+            screen.paste(fullPath("E-postadress"), email);            
         } catch (FindFailed ff) {
             //Do nothing.
-        }  
+        }        
     }
     
     @Override
     public void fillInName(String firstname, String lastname) {
         try {
-            screen.type(fullPath("Förnamn"), firstname, 0);              
+            screen.type(fullPath("Förnamn"), firstname, 0);            
             screen.type(fullPath("Efternamn"), lastname, 0);
         } catch (FindFailed ff) {
             //Do nothing.
-        }       
+        }        
     }
     
     @Override
     public void fillInPasswordTwice(String password) {
         try {
-            screen.type(fullPath("Lösenord"), password, 0);              
+            screen.type(fullPath("Lösenord"), password, 0);            
             screen.type(fullPath("Upprepa lösenord"), password, 0);
         } catch (FindFailed ff) {
             //Do nothing.
-        } 
+        }        
     }
     
     @Override
@@ -140,10 +139,10 @@ public class SikuliGUIRunner extends GUIRunner {
     @Override
     public void fillInSocialID(String socialID) {
         try {
-            screen.type(fullPath("Personnummer"), socialID, 0);                          
+            screen.type(fullPath("Personnummer"), socialID, 0);            
         } catch (FindFailed ff) {
             //Do nothing.
-        }  
+        }        
     }
     
     @Override
@@ -158,19 +157,19 @@ public class SikuliGUIRunner extends GUIRunner {
     public void login(String socialID, String password) {
         try {
             screen.type(fullPath("Login Personnummer"), socialID, 0);
-            screen.type(fullPath("Login Lösenord"), password, 0);                          
+            screen.type(fullPath("Login Lösenord"), password, 0);            
         } catch (FindFailed ff) {
             //Do nothing.
-        }  
+        }        
     }
     
     @Override
     public void selectItemFromGlitchList(String item) {
         try {
-            screen.click(fullPath(item), 0);                          
+            screen.click(fullPath(item), 0);            
         } catch (FindFailed ff) {
             //Do nothing.
-        } 
+        }        
     }
     
     @Override
@@ -183,13 +182,10 @@ public class SikuliGUIRunner extends GUIRunner {
         final URL url = ClassLoader.getSystemResource(fileName);
         return url.toExternalForm();//.getPath();
     }
-
+    
     private boolean successfullyClickedButton(String buttonFileName) {
         try {
-            /*System.out.println("Trying to click " + buttonText + variation + ".");
-            System.out.println(screen.exists(fullPath(buttonText + variation), 0));*/
             screen.click(fullPath(buttonFileName), 0);
-            /*System.out.println("Success!");*/
             return true;
         } catch (FindFailed ff) {
             return false;
