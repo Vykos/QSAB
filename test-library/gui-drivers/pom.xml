@@ -2,12 +2,13 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sigma.qsab</groupId>
-    <artifactId>test-library</artifactId>
+    <artifactId>gui-drivers</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>gui-drivers</module>
-        <module>test-drivers</module>        
+        <module>gui-runner</module>
+        <module>fest</module>
+        <module>sikuli</module>        
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
