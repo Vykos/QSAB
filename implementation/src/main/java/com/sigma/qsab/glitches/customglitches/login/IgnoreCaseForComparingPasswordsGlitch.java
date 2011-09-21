@@ -6,9 +6,9 @@ import com.sigma.qsab.glitches.Glitch;
 
 public class IgnoreCaseForComparingPasswordsGlitch extends Glitch {
 
-    private static String shortDesc = "Kontrollera inte versaler och gemener i l\u00f6senord vid login";
-    private static String longDesc = "Kontrollerar att l\u00f6senord \u00f6verensst\u00e4mmer vid "
-            + "login, men g\u00f6r inte skillnad p\u00e5 versaler och gemener.";
+    private static String shortDesc = "Kontrollera inte versaler och gemener i lösenord vid login";
+    private static String longDesc = "Kontrollerar att lösenord överensstämmer vid "
+            + "login, men gör inte skillnad på versaler och gemener.";
 
     public IgnoreCaseForComparingPasswordsGlitch() {
         super(shortDesc, longDesc, REGISTER_AREPASSWORDSEQUALGLITCH);

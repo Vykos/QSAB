@@ -49,12 +49,7 @@ public class FESTGUIRunner extends GUIRunner {
     }
 
     @Override
-    public void clickButton(final String buttonText) {
-        /* SKRIV OM SÅ FUNKTIONEN TAR EN KNAPPTEXT ISTÄLLET */
-        /*        JButtonFixture button;
-        
-        button = window.button(buttonText);
-        button.click();*/
+    public void clickButton(final String buttonText) {        
         GenericTypeMatcher<JButton> textMatcher =
                 new GenericTypeMatcher<JButton>(JButton.class) {
 

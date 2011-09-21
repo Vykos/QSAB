@@ -6,9 +6,13 @@
     <artifactId>gui-runner</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
     <build>
         <plugins>
-            <!--<plugin>
+             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
@@ -16,16 +20,11 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
-            </plugin>-->
-            <!--  this create jar file of code from src/test/java so modules with tests can share code -->
-            <plugin>
+            </plugin>
+            <plugin>                
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
                 <executions>
                     <execution>
                         <goals>

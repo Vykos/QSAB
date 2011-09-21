@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class RegisterTest {
+public class JUnitRegisterTest {
 
     private static GUIRunner runner;
     private String firstName;
@@ -47,8 +47,8 @@ public class RegisterTest {
         cleanCustomersData();     
     }
 
-    public RegisterTest(GUIRunner runner) {
-        RegisterTest.runner = runner;
+    public JUnitRegisterTest(GUIRunner runner) {
+        JUnitRegisterTest.runner = runner;
     }
 
     @Test
@@ -57,13 +57,13 @@ public class RegisterTest {
         prepareStrings();
         fillOutForm();
 
-        runner.clickButton("Nästa");
+        runner.clickButton("NÃ¤sta");
         runner.pause(1000);
 
         assertForm();
         
-        runner.clickButton("Föregående");
-        runner.clickButton("Föregående");
+        runner.clickButton("FÃ¶regÃ¥ende");
+        runner.clickButton("FÃ¶regÃ¥ende");
         runner.clickButton("Logga in");
         
         login();
@@ -80,13 +80,13 @@ public class RegisterTest {
         prepareErroneousStrings();
         fillOutForm();
 
-        runner.clickButton("Nästa");
+        runner.clickButton("NÃ¤sta");
         runner.pause(1000);
 
         assertForm();
         
-        runner.clickButton("Föregående");
-        runner.clickButton("Föregående");
+        runner.clickButton("FÃ¶regÃ¥ende");
+        runner.clickButton("FÃ¶regÃ¥ende");
         runner.clickButton("Logga in");
         
         login();
@@ -97,7 +97,7 @@ public class RegisterTest {
     }
 
     private void selectGlitch() {
-        runner.clickButton("Välj buggar");
+        runner.clickButton("VÃ¤lj buggar");
         runner.selectItemFromGlitchList("Formateringsfel i personnummer");
         runner.clickButton("Applicera valda fel");
     }

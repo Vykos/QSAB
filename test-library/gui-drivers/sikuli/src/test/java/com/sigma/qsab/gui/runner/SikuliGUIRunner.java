@@ -110,7 +110,7 @@ public class SikuliGUIRunner extends GUIRunner {
     @Override
     public void fillInName(String firstname, String lastname) {
         try {
-            screen.type(fullPath("Förnamn"), firstname, 0);            
+            screen.type(fullPath("FÃ¶rnamn"), firstname, 0);            
             screen.type(fullPath("Efternamn"), lastname, 0);
         } catch (FindFailed ff) {
             //Do nothing.
@@ -120,8 +120,8 @@ public class SikuliGUIRunner extends GUIRunner {
     @Override
     public void fillInPasswordTwice(String password) {
         try {
-            screen.type(fullPath("Lösenord"), password, 0);            
-            screen.type(fullPath("Upprepa lösenord"), password, 0);
+            screen.type(fullPath("LÃ¶senord"), password, 0);            
+            screen.type(fullPath("Upprepa lÃ¶senord"), password, 0);
         } catch (FindFailed ff) {
             //Do nothing.
         }        
@@ -147,8 +147,8 @@ public class SikuliGUIRunner extends GUIRunner {
     
     @Override
     public void initiate() {
-        screen = new Screen();
         mainFrame = new QSAB().getMainFrame();
+        screen = new Screen();        
         Settings.MinSimilarity = minimumSimilarityScore;
         Settings.ShowActions = showActions;
     }
@@ -157,7 +157,7 @@ public class SikuliGUIRunner extends GUIRunner {
     public void login(String socialID, String password) {
         try {
             screen.type(fullPath("Login Personnummer"), socialID, 0);
-            screen.type(fullPath("Login Lösenord"), password, 0);            
+            screen.type(fullPath("Login LÃ¶senord"), password, 0);            
         } catch (FindFailed ff) {
             //Do nothing.
         }        
