@@ -1,6 +1,9 @@
 package com.sigma.qsab.gui;
 
 import com.sigma.qsab.gui.runner.FESTGUIRunner;
+import com.sigma.qsab.data.CustomerStorerImpl;
+import com.sigma.qsab.data.CustomerStorer;
+import com.sigma.qsab.data.Customer;
 import cucumber.annotation.After;
 import cucumber.annotation.Before;
 import com.sigma.qsab.gui.runner.GUIRunner;
@@ -10,6 +13,9 @@ import cucumber.annotation.sv.Så;
 import cucumber.junit.Cucumber;
 import cucumber.junit.Feature;
 import org.junit.runner.RunWith;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 @RunWith(Cucumber.class)
 @Feature(value = "RegisterTest.feature")
@@ -68,17 +74,71 @@ public class CucumberRegisterTest {
         this.password = password;
     }
 
+    @Givet("^en kund med personnumret \"(.*)\" och lösenordet \"(.*)\".$")
+    public void prepareStrings(String socialID, String password) {
+        this.socialID = socialID;
+        this.password = password;
+    }
+
     @När("^kunden fyller i registreringsformuläret och klickar \"Nästa\".$")
     public void fillOutRegisterForm() {
-        findForm();        
+        findForm();
         fillOutForm();
 
         runner.clickButton("Nästa");
     }
-    
+
+    @När("^man väljer buggen \"(.*)\" och kunden fyller i registreringsformuläret och klickar \"Nästa\".$")
+    public void fillOutRegisterFormWithSelectedBug(String glitch) {
+        selectGlitch(glitch);
+
+        findForm();
+        fillOutForm();
+
+        runner.clickButton("Nästa");
+    }
+
+    @När("^kunden försöker logga in.$")
+    public void logIn() {
+        runner.clickButton("Logga in");
+        runner.login(socialID, password);
+        runner.clickButton("Logga in");
+    }
+
+    @När("^kunden raderas.$")
+    public void deleteCustomer() {
+        deleteCustomerFromDatabase();
+    }
+
     @Så("^skapas en ny kund med ovanstående information.$")
     public void checkIfCustomerExists() {
+        boolean expectedDoesCustomerExist = true;
+
+        Customer customer = new Customer(firstName, lastName, socialID, street, zipCode, city, phone, cellPhone, email, password);
+        CustomerStorer customers = new CustomerStorerImpl();
+
+        boolean actualDoesCustomerExist = customers.containsCustomer(customer);
+
+        assertThat(actualDoesCustomerExist, is(expectedDoesCustomerExist));
+        runner.pause(1000);
+    }
+
+    @Så("^lyckas han.$")
+    public void verifyLoggedIn() {
+        runner.pause(3000);
+        //Should verify actual log in
+    }
     
+    @Så("^finns han inte längre kvar i databasen.$")
+    public void verifyDeletedCustomer() {
+        boolean expectedDoesCustomerExist = false;
+
+        Customer customer = new Customer(firstName, lastName, socialID, street, zipCode, city, phone, cellPhone, email, password);
+        CustomerStorer customers = new CustomerStorerImpl();
+
+        boolean actualDoesCustomerExist = customers.containsCustomer(customer);
+
+        assertThat(actualDoesCustomerExist, is(expectedDoesCustomerExist));
     }
 
     private void findForm() {
@@ -93,5 +153,19 @@ public class CucumberRegisterTest {
         runner.fillInCellPhoneNumber(cellPhone);
         runner.fillInEmail(email);
         runner.fillInPasswordTwice(password);
+    }
+
+    private void selectGlitch(String glitch) {
+        runner.clickButton("Välj buggar");
+        runner.selectItemFromGlitchList(glitch);
+        runner.clickButton("Applicera valda fel");
+    }
+
+    private void deleteCustomerFromDatabase() {
+        CustomerStorer customers = new CustomerStorerImpl();
+        Customer customer = new Customer(firstName, lastName, socialID, street, zipCode, city, phone, cellPhone, email, password);
+        if (customers.deleteCustomer(customer)) {
+            System.out.println("Deleted customer:\n" + customer);
+        }
     }
 }
