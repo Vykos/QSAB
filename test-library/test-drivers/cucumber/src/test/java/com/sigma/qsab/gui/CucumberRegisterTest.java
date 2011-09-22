@@ -46,13 +46,6 @@ public class CucumberRegisterTest {
     public CucumberRegisterTest() {
         CucumberRegisterTest.runner = new FESTGUIRunner();
     }
-    /*
-    @Givet("^en kund med f�rnamnet \"([A-z]*)\", efternamnet \"([A-z]*)\", personnumret "
-    + "\"([0-9]*\\-[0-9]*)\", som bor p� gatan \"([A-z]* [0-9]*)\" med postnummer \"([0-9]*)\" "
-    + "och orten \"([A-z]*)\", har telefonnumret \"([0-9]*\\-[0-9]*)\", mobilnumret "
-    + "\"([0-9]*\\-[0-9]*)\", mejladressen \"([a-z]*@[a-z]*\\.[a-z]*)\" och anv�nder l�senordet "
-    + "\"([0-9]*)\".$")     
-     */
 
     @Givet("^en kund med förnamnet \"(.*)\", efternamnet \"(.*)\", personnumret "
     + "\"(.*)\", som bor på gatan \"(.*)\" med postnummer \"(.*)\" "
