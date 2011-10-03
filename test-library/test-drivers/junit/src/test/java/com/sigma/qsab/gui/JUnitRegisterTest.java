@@ -6,6 +6,7 @@ import com.sigma.qsab.data.CustomerStorerImpl;
 import com.sigma.qsab.gui.runner.FESTGUIRunner;
 import com.sigma.qsab.gui.runner.GUIRunner;
 import com.sigma.qsab.gui.runner.SikuliGUIRunner;
+import com.sigma.qsab.gui.runner.UISpec4JGUIRunner;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,12 +39,12 @@ public class JUnitRegisterTest {
 
     @Before
     public void setUp() {
-        runner.initiate();                  
+        runner.initiateGUIRunner();                  
     }
 
     @After
     public void tearDown() {
-        runner.tearDown();
+        runner.tearDownGUIRunner();
         cleanCustomersData();     
     }
 
@@ -164,7 +165,8 @@ public class JUnitRegisterTest {
     public static Collection<GUIRunner[]> runners() {
         List<GUIRunner[]> runners = new LinkedList<GUIRunner[]>();
         //runners.add(new GUIRunner[]{new SikuliGUIRunner()});
-        runners.add(new GUIRunner[]{new FESTGUIRunner()});        
+        //runners.add(new GUIRunner[]{new FESTGUIRunner()});        
+        runners.add(new GUIRunner []{new UISpec4JGUIRunner()});
 
         return runners;
     }

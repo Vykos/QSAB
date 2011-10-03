@@ -9,21 +9,15 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
 import org.sikuli.script.Settings;
 
-public class SikuliGUIRunner extends GUIRunner {    
+public class SikuliGUIRunner implements GUIRunner {    
     
     private static final double minimumSimilarityScore = 0.9;
     private static final boolean showActions = false;
     private Screen screen;
     private MainFrame mainFrame;
-    private GUIStrings gs;
-    
-    @SuppressWarnings("CallToThreadDumpStack")
+
     public SikuliGUIRunner() {
-        try {
-            gs = new GUIStrings("/strings.properties");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //do nothing
     }
     
     @Override
@@ -146,7 +140,7 @@ public class SikuliGUIRunner extends GUIRunner {
     }
     
     @Override
-    public void initiate() {
+    public void initiateGUIRunner() {
         mainFrame = new QSAB().getMainFrame();
         screen = new Screen();        
         Settings.MinSimilarity = minimumSimilarityScore;
@@ -173,7 +167,7 @@ public class SikuliGUIRunner extends GUIRunner {
     }
     
     @Override
-    public void tearDown() {
+    public void tearDownGUIRunner() {
         mainFrame.dispose();
     }
     
@@ -189,6 +183,16 @@ public class SikuliGUIRunner extends GUIRunner {
             return true;
         } catch (FindFailed ff) {
             return false;
+        }
+    }
+
+    @SuppressWarnings("CallToThreadDumpStack")
+    @Override
+    public void pause(long timeToSleep) {
+        try {
+            Thread.sleep(timeToSleep);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

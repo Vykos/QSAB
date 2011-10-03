@@ -1,5 +1,6 @@
 package com.sigma.qsab.gui;
 
+import com.sigma.qsab.gui.runner.UISpec4JGUIRunner;
 import com.sigma.qsab.gui.runner.FESTGUIRunner;
 import com.sigma.qsab.data.CustomerStorerImpl;
 import com.sigma.qsab.data.CustomerStorer;
@@ -35,12 +36,12 @@ public class CucumberRegisterTest {
 
     @Before
     public void setUp() {
-        runner.initiate();
+        runner.initiateGUIRunner();
     }
 
     @After
     public void tearDown() {
-        runner.tearDown();
+        runner.tearDownGUIRunner();
     }
 
     public CucumberRegisterTest() {

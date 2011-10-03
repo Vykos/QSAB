@@ -8,7 +8,9 @@
     <modules>
         <module>gui-runner</module>
         <module>fest</module>
-        <module>sikuli</module>        
+        <module>sikuli</module>     
+        <module>uispec4j</module>
+        <module>marathon</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

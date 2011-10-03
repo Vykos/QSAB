@@ -57,6 +57,13 @@
             <classifier>tests</classifier>
         </dependency>
         <dependency>
+            <groupId>com.sigma.qsab</groupId>
+            <artifactId>uispec4j</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
+            <classifier>tests</classifier>
+        </dependency>
+        <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
             <version>1.0.0-SNAPSHOT</version>

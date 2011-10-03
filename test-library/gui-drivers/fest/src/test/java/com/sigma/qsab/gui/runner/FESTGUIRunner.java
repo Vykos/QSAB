@@ -13,14 +13,14 @@ import java.io.IOException;
 import javax.swing.JButton;
 import org.fest.swing.core.GenericTypeMatcher;
 
-public class FESTGUIRunner extends GUIRunner {
+public class FESTGUIRunner implements GUIRunner {
 
     private GUIStrings gs;
     private EmergencyAbortListener listener;
     private FrameFixture window;
 
     @Override
-    public void initiate() {
+    public void initiateGUIRunner() {
         MainFrame frame = GuiActionRunner.execute(new GuiQuery<MainFrame>() {
 
             @Override
@@ -33,7 +33,7 @@ public class FESTGUIRunner extends GUIRunner {
     }
 
     @Override
-    public void tearDown() {
+    public void tearDownGUIRunner() {
         listener.unregister();
         window.cleanUp();
     }
@@ -149,5 +149,15 @@ public class FESTGUIRunner extends GUIRunner {
     public void login(String socialID, String password) {
         window.textBox("field_" + gs.getString(GUIStrings.SOCIALID)).setText(socialID);
         window.textBox("field_" + gs.getString(GUIStrings.PASSWORD)).setText(password);
+    }
+    
+    @SuppressWarnings("CallToThreadDumpStack")
+    @Override
+    public void pause(long timeToSleep) {
+        try {
+            Thread.sleep(timeToSleep);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
