@@ -1,12 +1,20 @@
 package com.sigma.qsab.gui.runner;
 
 import com.sigma.qsab.gui.GUIStrings;
+import java.awt.Component;
 import java.io.IOException;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import org.uispec4j.Button;
+import org.uispec4j.ListBox;
+import org.uispec4j.PasswordField;
+import org.uispec4j.TextBox;
 import org.uispec4j.UISpecTestCase;
 import org.uispec4j.Window;
+import org.uispec4j.finder.ComponentMatcher;
 
 public class UISpec4JGUIRunner extends UISpecTestCase implements GUIRunner {
+
     Window window;
     GUIStrings gs;
 
@@ -17,8 +25,8 @@ public class UISpec4JGUIRunner extends UISpecTestCase implements GUIRunner {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }   
-    
+    }
+
     @Override
     public void initiateGUIRunner() {
         setAdapter(new QSABAdapter());
@@ -36,94 +44,173 @@ public class UISpec4JGUIRunner extends UISpecTestCase implements GUIRunner {
     }
 
     @Override
-    public void clickButton(String buttonText) {
+    public void clickButton(final String buttonText) {
         System.out.println("==== CLICKING BUTTON: " + buttonText + " ====");
-        Button button = window.getButton(buttonText);
+        ComponentMatcher buttonMatcher = new ComponentMatcher() {
+
+            @Override
+            public boolean matches(Component component) {
+                String componentText;
+                try {
+                    componentText = ((JButton) component).getText();
+                } catch (Exception ex) {
+                    return false;
+                }
+                if (componentText == null) {
+                    return false;
+                }
+                return ((componentText.equals(buttonText))
+                        && (component.isShowing()));
+            }
+        };
+        Button button = window.getButton(buttonMatcher);
         button.click();
     }
 
     @Override
     public void selectItemFromGlitchList(String item) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ListBox listBox = window.getListBox("superadmin_glitchlist");
+        int nrOfComponents = listBox.getSize();
+        int indexOfItem = 0;
+        for (; indexOfItem < nrOfComponents; indexOfItem++) {
+            if (((JCheckBox) (listBox.getSwingRendererComponentAt(0))).getText().equals(item)) {
+                break;
+            }
+        }
+        listBox.click(indexOfItem);
     }
 
     @Override
-    public void fillInName(String firstname, String lastname) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void fillInName(String firstName, String lastName) {
+        System.out.println("==== FILLING OUT NAME ====");
+        findTextBox("field_" + gs.getString(GUIStrings.FIRSTNAME)).setText(firstName);
+        findTextBox("field_" + gs.getString(GUIStrings.LASTNAME)).setText(lastName);
     }
 
     @Override
     public void fillInSocialID(String socialID) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("==== FILLING OUT SOCIAL ID ====");
+        findTextBox("field_" + gs.getString(GUIStrings.SOCIALID)).setText(socialID);
     }
 
     @Override
     public void fillInAddress(String street, String zipcode, String city) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("==== FILLING OUT ADDRESS ====");
+        findTextBox("field_" + gs.getString(GUIStrings.STREET)).setText(street);
+        findTextBox("field_" + gs.getString(GUIStrings.ZIPCODE)).setText(zipcode);
+        findTextBox("field_" + gs.getString(GUIStrings.CITY)).setText(city);
     }
 
     @Override
     public void fillInPhoneNumber(String phoneNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("==== FILLING OUT PHONE NUMBER ====");
+        findTextBox("field_" + gs.getString(GUIStrings.PHONE)).setText(phoneNumber);
     }
 
     @Override
     public void fillInCellPhoneNumber(String cellPhoneNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("==== FILLING OUT CELLPHONE NUMBER ====");
+        findTextBox("field_" + gs.getString(GUIStrings.CELLPHONE)).setText(cellPhoneNumber);
     }
 
     @Override
     public void fillInEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("==== FILLING OUT E-MAIL ====");
+        findTextBox("field_" + gs.getString(GUIStrings.EMAIL)).setText(email);
     }
 
     @Override
     public void fillInPasswordTwice(String password) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("==== FILLING OUT PASSWORD ====");
+        findPasswordField("field_" + gs.getString(GUIStrings.PASSWORD)).setPassword(password);
+        findPasswordField("field_" + gs.getString(GUIStrings.PASSWORDREPEAT)).setPassword(password);
     }
 
     @Override
-    public void assertName(String firstname, String lastname) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void assertName(String firstName, String lastName) {
+        assertTrue("First name is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.FIRSTNAME), firstName));
+        assertTrue("Last name is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.LASTNAME), lastName));
     }
 
     @Override
     public void assertSocialID(String socialID) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        assertTrue("Social ID is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.SOCIALID), socialID));
     }
 
     @Override
     public void assertAddress(String street, String zipcode, String city) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        assertTrue("Street is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.STREET), street));
+        assertTrue("Zip code is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.ZIPCODE), zipcode));
+        assertTrue("City is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.CITY), city));
     }
 
     @Override
     public void assertPhoneNumber(String phoneNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        assertTrue("Phone number is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.PHONE), phoneNumber));
     }
 
     @Override
     public void assertCellPhoneNumber(String cellPhoneNumber) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        assertTrue("Cellphone number is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.CELLPHONE), cellPhoneNumber));
     }
 
     @Override
     public void assertEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        assertTrue("E-mail is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.EMAIL), email));
     }
 
     @Override
     public void assertPasswords(String password) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        assertTrue("Password is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.PASSWORD), password));
+        assertTrue("Repeated password is incorrect", isTextBoxCorrectlyFilledOut("text_" + gs.getString(GUIStrings.PASSWORDREPEAT), password));
     }
 
     @Override
     public void login(String socialID, String password) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("==== LOGGING IN ====");
+        findTextBox("field_" + gs.getString(GUIStrings.SOCIALID)).setText(socialID);
+        findPasswordField("field_" + gs.getString(GUIStrings.PASSWORD)).setPassword(password);
     }
 
+    @SuppressWarnings("CallToThreadDumpStack")
     @Override
     public void pause(long timeToSleep) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //do nothing
+    }
+
+    private TextBox findTextBox(final String textBoxName) {
+        ComponentMatcher textBoxMatcher = new ComponentMatcher() {
+
+            @Override
+            public boolean matches(Component component) {
+                String componentName = component.getName();
+                if (componentName == null) {
+                    return false;
+                }
+                return ((componentName.equals(textBoxName))
+                        && (component.isShowing()));
+            }
+        };
+        return window.getTextBox(textBoxMatcher);
+    }
+
+    private PasswordField findPasswordField(final String passwordFieldName) {
+        ComponentMatcher textBoxMatcher = new ComponentMatcher() {
+
+            @Override
+            public boolean matches(Component component) {
+                String componentName = component.getName();
+                if (componentName == null) {
+                    return false;
+                }
+                return ((componentName.equals(passwordFieldName))
+                        && (component.isShowing()));
+            }
+        };
+        return window.getPasswordField(textBoxMatcher);
+    }
+
+    private boolean isTextBoxCorrectlyFilledOut(String labelName, String text) {
+        return window.getTextBox(labelName).getText().equals(text);
     }
 }

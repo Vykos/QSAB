@@ -36,7 +36,7 @@ public class SikuliGUIRunner implements GUIRunner {
     }
     
     @Override
-    public void assertName(String firstname, String lastname) {
+    public void assertName(String firstName, String lastName) {
         //throw new UnsupportedOperationException("Not supported yet.");
     }
     
@@ -102,10 +102,10 @@ public class SikuliGUIRunner implements GUIRunner {
     }
     
     @Override
-    public void fillInName(String firstname, String lastname) {
+    public void fillInName(String firstName, String lastName) {
         try {
-            screen.type(fullPath("Förnamn"), firstname, 0);            
-            screen.type(fullPath("Efternamn"), lastname, 0);
+            screen.type(fullPath("Förnamn"), firstName, 0);            
+            screen.type(fullPath("Efternamn"), lastName, 0);
         } catch (FindFailed ff) {
             //Do nothing.
         }        

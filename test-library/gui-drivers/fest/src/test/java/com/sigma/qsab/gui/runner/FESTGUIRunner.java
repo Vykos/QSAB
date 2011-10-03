@@ -68,9 +68,9 @@ public class FESTGUIRunner implements GUIRunner {
     }
 
     @Override
-    public void fillInName(String firstname, String lastname) {
-        window.textBox("field_" + gs.getString(GUIStrings.FIRSTNAME)).setText(firstname);
-        window.textBox("field_" + gs.getString(GUIStrings.LASTNAME)).setText(lastname);
+    public void fillInName(String firstName, String lastName) {
+        window.textBox("field_" + gs.getString(GUIStrings.FIRSTNAME)).setText(firstName);
+        window.textBox("field_" + gs.getString(GUIStrings.LASTNAME)).setText(lastName);
     }
 
     @Override
@@ -107,9 +107,9 @@ public class FESTGUIRunner implements GUIRunner {
     }
 
     @Override
-    public void assertName(String firstname, String lastname) {
-        window.label("text_" + gs.getString(GUIStrings.FIRSTNAME)).requireText(firstname);
-        window.label("text_" + gs.getString(GUIStrings.LASTNAME)).requireText(lastname);
+    public void assertName(String firstName, String lastName) {
+        window.label("text_" + gs.getString(GUIStrings.FIRSTNAME)).requireText(firstName);
+        window.label("text_" + gs.getString(GUIStrings.LASTNAME)).requireText(lastName);
     }
 
     @Override

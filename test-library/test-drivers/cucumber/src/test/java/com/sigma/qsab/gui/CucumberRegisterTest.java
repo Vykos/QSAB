@@ -1,7 +1,6 @@
 package com.sigma.qsab.gui;
 
 import com.sigma.qsab.gui.runner.UISpec4JGUIRunner;
-import com.sigma.qsab.gui.runner.FESTGUIRunner;
 import com.sigma.qsab.data.CustomerStorerImpl;
 import com.sigma.qsab.data.CustomerStorer;
 import com.sigma.qsab.data.Customer;
@@ -45,7 +44,7 @@ public class CucumberRegisterTest {
     }
 
     public CucumberRegisterTest() {
-        CucumberRegisterTest.runner = new FESTGUIRunner();
+        CucumberRegisterTest.runner = new UISpec4JGUIRunner();
     }
 
     @Givet("^en kund med förnamnet \"(.*)\", efternamnet \"(.*)\", personnumret "

@@ -10,7 +10,7 @@ public interface GUIRunner {
 
     public void selectItemFromGlitchList(String item);
 
-    public void fillInName(String firstname, String lastname);
+    public void fillInName(String firstName, String lastName);
 
     public void fillInSocialID(String socialID);
 
@@ -24,7 +24,7 @@ public interface GUIRunner {
 
     public void fillInPasswordTwice(String password);
 
-    public void assertName(String firstname, String lastname);
+    public void assertName(String firstName, String lastName);
 
     public void assertSocialID(String socialID);
 
@@ -39,6 +39,8 @@ public interface GUIRunner {
     public void assertPasswords(String password);
 
     public void login(String socialID, String password);        
+    
+    //public void asserLoggedIn(); <-- borde implementeras i alla test och alla drivare
         
     public void pause(long timeToSleep);
 }
