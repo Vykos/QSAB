@@ -1,0 +1,16 @@
+- !!net.sourceforge.marathon.objectmap.OMapContainer
+    containerGeneralProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JFrame}
+    - {name: oMapClassName, value: com.sigma.qsab.gui.MainFrame}
+    - {name: size, value: '[width=1024,height=768]'}
+    - {name: oMapClassSimpleName, value: MainFrame}
+    - {name: title, value: Quality Spa AB}
+    - {name: component.class.simpleName, value: MainFrame}
+    - {name: name, value: frame0}
+    - {name: component.class.name, value: com.sigma.qsab.gui.MainFrame}
+    - {name: accessibleContext.accessibleName, value: Quality Spa AB}
+    containerRecognitionProperties:
+    - {method: equals, name: oMapClassName, value: com.sigma.qsab.gui.MainFrame}
+    containerTitles: [Quality Spa AB]
+    fileName: Quality Spa AB_2266005797884163854.yaml

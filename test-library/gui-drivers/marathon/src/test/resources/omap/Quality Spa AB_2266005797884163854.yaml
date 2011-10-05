@@ -1,0 +1,262 @@
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: welcome_superadmin}
+    - {method: equals, name: type, value: JButton}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JButton}
+    - {name: cText, value: Välj buggar}
+    - {name: type, value: JButton}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JButton}
+    - {name: name, value: welcome_superadmin}
+    - {name: component.class.name, value: javax.swing.JButton}
+    - {name: accessibleContext.accessibleName, value: Välj buggar}
+    name: welcome_superadmin
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: welcome_login}
+    - {method: equals, name: type, value: JButton}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JButton}
+    - {name: cText, value: Logga in}
+    - {name: type, value: JButton}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JButton}
+    - {name: name, value: welcome_login}
+    - {name: component.class.name, value: javax.swing.JButton}
+    - {name: accessibleContext.accessibleName, value: Logga in}
+    name: welcome_login
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: superadmin_accept}
+    - {method: equals, name: type, value: JButton}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JButton}
+    - {name: cText, value: Applicera valda fel}
+    - {name: type, value: JButton}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JButton}
+    - {name: name, value: superadmin_accept}
+    - {name: component.class.name, value: javax.swing.JButton}
+    - {name: accessibleContext.accessibleName, value: Applicera valda fel}
+    name: superadmin_accept
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: welcome_register}
+    - {method: equals, name: type, value: JButton}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JButton}
+    - {name: cText, value: Ny kund}
+    - {name: type, value: JButton}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JButton}
+    - {name: name, value: welcome_register}
+    - {name: component.class.name, value: javax.swing.JButton}
+    - {name: accessibleContext.accessibleName, value: Ny kund}
+    name: welcome_register
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_Förnamn}
+    - {method: equals, name: type, value: JTextField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JTextField}
+    - {name: type, value: JTextField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JTextField}
+    - {name: name, value: field_Förnamn}
+    - {name: component.class.name, value: javax.swing.JTextField}
+    name: field_Förnamn
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_Efternamn}
+    - {method: equals, name: type, value: JTextField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JTextField}
+    - {name: type, value: JTextField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JTextField}
+    - {name: name, value: field_Efternamn}
+    - {name: component.class.name, value: javax.swing.JTextField}
+    name: field_Efternamn
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_Personnummer}
+    - {method: equals, name: type, value: JTextField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JTextField}
+    - {name: type, value: JTextField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JTextField}
+    - {name: name, value: field_Personnummer}
+    - {name: component.class.name, value: javax.swing.JTextField}
+    name: field_Personnummer
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_Postadress}
+    - {method: equals, name: type, value: JTextField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JTextField}
+    - {name: type, value: JTextField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JTextField}
+    - {name: name, value: field_Postadress}
+    - {name: component.class.name, value: javax.swing.JTextField}
+    name: field_Postadress
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_Postnummer}
+    - {method: equals, name: type, value: JTextField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JTextField}
+    - {name: type, value: JTextField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JTextField}
+    - {name: name, value: field_Postnummer}
+    - {name: component.class.name, value: javax.swing.JTextField}
+    name: field_Postnummer
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_Ort}
+    - {method: equals, name: type, value: JTextField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JTextField}
+    - {name: type, value: JTextField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JTextField}
+    - {name: name, value: field_Ort}
+    - {name: component.class.name, value: javax.swing.JTextField}
+    name: field_Ort
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_Hemtelefon}
+    - {method: equals, name: type, value: JTextField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JTextField}
+    - {name: type, value: JTextField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JTextField}
+    - {name: name, value: field_Hemtelefon}
+    - {name: component.class.name, value: javax.swing.JTextField}
+    name: field_Hemtelefon
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_Mobil}
+    - {method: equals, name: type, value: JTextField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JTextField}
+    - {name: type, value: JTextField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JTextField}
+    - {name: name, value: field_Mobil}
+    - {name: component.class.name, value: javax.swing.JTextField}
+    name: field_Mobil
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_E-postadress}
+    - {method: equals, name: type, value: JTextField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JTextField}
+    - {name: type, value: JTextField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JTextField}
+    - {name: name, value: field_E-postadress}
+    - {name: component.class.name, value: javax.swing.JTextField}
+    name: field_E-postadress
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_Lösenord}
+    - {method: equals, name: type, value: JPasswordField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JPasswordField}
+    - {name: type, value: JPasswordField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JPasswordField}
+    - {name: name, value: field_Lösenord}
+    - {name: component.class.name, value: javax.swing.JPasswordField}
+    name: field_Lösenord
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: field_Upprepa lösenord}
+    - {method: equals, name: type, value: JPasswordField}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JPasswordField}
+    - {name: type, value: JPasswordField}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JPasswordField}
+    - {name: name, value: field_Upprepa lösenord}
+    - {name: component.class.name, value: javax.swing.JPasswordField}
+    name: field_Upprepa lösenord
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: register_next}
+    - {method: equals, name: type, value: JButton}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JButton}
+    - {name: cText, value: Nästa}
+    - {name: type, value: JButton}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JButton}
+    - {name: name, value: register_next}
+    - {name: component.class.name, value: javax.swing.JButton}
+    - {name: accessibleContext.accessibleName, value: Nästa}
+    name: register_next
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: register_previous}
+    - {method: equals, name: type, value: JButton}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JButton}
+    - {name: cText, value: Föregående}
+    - {name: type, value: JButton}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JButton}
+    - {name: name, value: register_previous}
+    - {name: component.class.name, value: javax.swing.JButton}
+    - {name: accessibleContext.accessibleName, value: Föregående}
+    name: register_previous
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: login_next}
+    - {method: equals, name: type, value: JButton}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JButton}
+    - {name: cText, value: Logga in}
+    - {name: type, value: JButton}
+    - {name: size, value: '[width=180,height=30]'}
+    - {name: component.class.simpleName, value: JButton}
+    - {name: name, value: login_next}
+    - {name: component.class.name, value: javax.swing.JButton}
+    - {name: accessibleContext.accessibleName, value: Logga in}
+    name: login_next
+- !!net.sourceforge.marathon.objectmap.OMapComponent
+    componentRecognitionProperties:
+    - {method: equals, name: name, value: superadmin_glitchlist}
+    - {method: equals, name: type, value: com.sigma.qsab.gui.CheckList}
+    generalProperties:
+    - {name: enabled, value: 'true'}
+    - {name: instanceOf, value: javax.swing.JList}
+    - {name: type, value: com.sigma.qsab.gui.CheckList}
+    - {name: size, value: '[width=397,height=497]'}
+    - {name: component.class.simpleName, value: CheckList}
+    - {name: name, value: superadmin_glitchlist}
+    - {name: component.class.name, value: com.sigma.qsab.gui.CheckList}
+    - {name: fieldName, value: glitchList}
+    name: superadmin_glitchlist
