@@ -11,7 +11,9 @@ import org.fest.swing.fixture.FrameFixture;
 
 import java.io.IOException;
 import javax.swing.JButton;
+import junit.framework.Assert;
 import org.fest.swing.core.GenericTypeMatcher;
+import org.fest.swing.fixture.JButtonFixture;
 
 public class FESTGUIRunner implements GUIRunner {
 
@@ -49,14 +51,14 @@ public class FESTGUIRunner implements GUIRunner {
     }
 
     @Override
-    public void clickButton(final String buttonText) {        
+    public void clickButton(final String buttonText) {
         GenericTypeMatcher<JButton> textMatcher =
                 new GenericTypeMatcher<JButton>(JButton.class) {
 
                     @Override
-                    protected boolean isMatching(JButton button) {                        
-                        return ((button.isShowing()) &&
-                            (buttonText.equals(button.getText())));                        
+                    protected boolean isMatching(JButton button) {
+                        return ((button.isShowing())
+                                && (buttonText.equals(button.getText())));
                     }
                 };
         window.button(textMatcher).click();
@@ -150,7 +152,26 @@ public class FESTGUIRunner implements GUIRunner {
         window.textBox("field_" + gs.getString(GUIStrings.SOCIALID)).setText(socialID);
         window.textBox("field_" + gs.getString(GUIStrings.PASSWORD)).setText(password);
     }
-    
+
+    @Override
+    public void asserLoggedIn() {
+        final String logOutButtonText = gs.getString(GUIStrings.LOGOUT);
+        GenericTypeMatcher<JButton> textMatcher =
+                new GenericTypeMatcher<JButton>(JButton.class) {
+
+                    @Override
+                    protected boolean isMatching(JButton button) {
+                        return ((button.isShowing())
+                                && (logOutButtonText.equals(button.getText())));
+                    }
+                };
+        try {
+            window.button(textMatcher);
+        } catch (Exception ex) {
+            Assert.assertNotNull("Customer did not get logged in.", null);
+        }        
+    }
+
     @SuppressWarnings("CallToThreadDumpStack")
     @Override
     public void pause(long timeToSleep) {

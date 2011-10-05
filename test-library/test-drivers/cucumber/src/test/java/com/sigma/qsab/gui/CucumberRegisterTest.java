@@ -1,6 +1,6 @@
 package com.sigma.qsab.gui;
 
-import com.sigma.qsab.gui.runner.UISpec4JGUIRunner;
+import com.sigma.qsab.gui.runner.FESTGUIRunner;
 import com.sigma.qsab.data.CustomerStorerImpl;
 import com.sigma.qsab.data.CustomerStorer;
 import com.sigma.qsab.data.Customer;
@@ -44,7 +44,7 @@ public class CucumberRegisterTest {
     }
 
     public CucumberRegisterTest() {
-        CucumberRegisterTest.runner = new UISpec4JGUIRunner();
+        CucumberRegisterTest.runner = new FESTGUIRunner();
     }
 
     @Givet("^en kund med förnamnet \"(.*)\", efternamnet \"(.*)\", personnumret "
@@ -118,8 +118,8 @@ public class CucumberRegisterTest {
 
     @Så("^lyckas han.$")
     public void verifyLoggedIn() {
-        runner.pause(3000);
-        //Should verify actual log in
+        runner.asserLoggedIn();
+        runner.pause(3000);        
     }
     
     @Så("^finns han inte längre kvar i databasen.$")

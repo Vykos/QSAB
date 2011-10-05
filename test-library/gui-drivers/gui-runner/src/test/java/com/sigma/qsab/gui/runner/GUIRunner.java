@@ -40,7 +40,7 @@ public interface GUIRunner {
 
     public void login(String socialID, String password);        
     
-    //public void asserLoggedIn(); <-- borde implementeras i alla test och alla drivare
+    public void asserLoggedIn();
         
     public void pause(long timeToSleep);
 }
