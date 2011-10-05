@@ -13,7 +13,6 @@ import java.io.IOException;
 import javax.swing.JButton;
 import junit.framework.Assert;
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.fixture.JButtonFixture;
 
 public class FESTGUIRunner implements GUIRunner {
 
@@ -154,7 +153,7 @@ public class FESTGUIRunner implements GUIRunner {
     }
 
     @Override
-    public void asserLoggedIn() {
+    public void assertLoggedIn() {
         final String logOutButtonText = gs.getString(GUIStrings.LOGOUT);
         GenericTypeMatcher<JButton> textMatcher =
                 new GenericTypeMatcher<JButton>(JButton.class) {

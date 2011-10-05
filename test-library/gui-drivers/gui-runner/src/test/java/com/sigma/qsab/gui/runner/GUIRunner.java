@@ -40,7 +40,7 @@ public interface GUIRunner {
 
     public void login(String socialID, String password);        
     
-    public void asserLoggedIn();
+    public void assertLoggedIn();
         
     public void pause(long timeToSleep);
 }

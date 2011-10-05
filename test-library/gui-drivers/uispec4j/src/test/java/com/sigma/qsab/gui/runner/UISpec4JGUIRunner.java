@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import junit.framework.Assert;
 import org.uispec4j.Button;
 import org.uispec4j.ListBox;
 import org.uispec4j.PasswordField;
@@ -212,5 +213,32 @@ public class UISpec4JGUIRunner extends UISpecTestCase implements GUIRunner {
 
     private boolean isTextBoxCorrectlyFilledOut(String labelName, String text) {
         return window.getTextBox(labelName).getText().equals(text);
+    }
+
+    @Override
+    public void assertLoggedIn() {
+        final String logOutButtonText = gs.getString(GUIStrings.LOGOUT);
+        ComponentMatcher buttonMatcher = new ComponentMatcher() {
+
+            @Override
+            public boolean matches(Component component) {
+                String componentText;
+                try {
+                    componentText = ((JButton) component).getText();
+                } catch (Exception ex) {
+                    return false;
+                }
+                if (componentText == null) {
+                    return false;
+                }
+                return ((componentText.equals(logOutButtonText))
+                        && (component.isShowing()));
+            }
+        };
+        try {
+            window.getButton(buttonMatcher);
+        } catch (Exception ex) {
+            Assert.assertNotNull("Customer did not get logged in.", null);
+        }
     }
 }
