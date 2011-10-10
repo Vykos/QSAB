@@ -7,16 +7,70 @@ Register customer
     When a customer fills out the register sheet and click "Nästa"
     Then a new customer is created in the database
 
+Log in
+    # A registered customer logs in
+
+    Given a customer with the social id "121212-1212" and the password "123456"
+    When the customer tries to log in
+    Then he succeeds
+
+Register customer with social id bug
+    # Customers must register before he can use the services provided
+
+    Given a customer with the first name "Test", last name "Testsson", social id "1212-121212", that lives on "Testgatan 55" with the zip code "12345" in "Testort", have the phone number "08-123456", cellphone number "073-123456", email "test@test.com" and will be using the password "123456"
+    When the bug "Formateringsfel i personnummer" is selected and a customer fills out the register sheet and click "Nästa"    
+    Then a new customer is created in the database
+
+Log in with social id bug
+    # A registered customer logs in
+
+    Given a customer with the social id "1212-121212" and the password "123456"
+    When the customer tries to log in
+    Then he succeeds
+
+Delete customer from database (cleaning)
+    # We don't want the test customers to remain in the database
+
+    Given a customer with the first name "Test", last name "Testsson", social id "121212-1212", that lives on "Testgatan 55" with the zip code "12345" in "Testort", have the phone number "08-123456", cellphone number "073-123456", email "test@test.com" and will be using the password "123456"
+    When the customer is deleted from the database
+    Then it cease to exist
+
+Delete customer with social id bug from database (cleaning)
+    # We don't want the test customers to remain in the database
+
+    Given a customer with the first name "Test", last name "Testsson", social id "1212-121212", that lives on "Testgatan 55" with the zip code "12345" in "Testort", have the phone number "08-123456", cellphone number "073-123456", email "test@test.com" and will be using the password "123456"
+    When the customer is deleted from the database
+    Then it cease to exist
 
 *** Settings ***
 Library          com.sigma.qsab.gui.RobotFrameworkRegisterTest
+Test Setup       set Up
+Test Teardown    tear Down
 
-*** Keywords ***'
+*** Keywords ***
 a customer with the first name "${firstName}", last name "${lastName}", social id "${socialID}", that lives on "${street}" with the zip code "${zipCode}" in "${city}", have the phone number "${phone}", cellphone number "${cellphone}", email "${email}" and will be using the password "${password}"
-    prepare Strings  ${firstName}  ${lastName}  ${socialID}  ${street}  ${zipCode}  ${city}  ${phone}  ${cellphone}  ${email}  ${password}"
+    prepare Register Strings  ${firstName}  ${lastName}  ${socialID}  ${street}  ${zipCode}  ${city}  ${phone}  ${cellphone}  ${email}  ${password}
+
+a customer with the social id "${socialID}" and the password "${password}"
+    prepare Login Strings  ${socialID}  ${password}
 
 a customer fills out the register sheet and click "Nästa"
     fill Out Register Form
 
+When the bug "${glitch}" is selected and a customer fills out the register sheet and click "Nästa"
+    fill Out Register Form With Selected Bug  ${glitch}
+
+the customer tries to log in
+    log In
+
+the customer is deleted from the database
+    delete Customer
+
 a new customer is created in the database
     check If Customer Exists
+
+he succeeds
+    verify Logged In
+
+it cease to exist
+    verify Deleted Customer

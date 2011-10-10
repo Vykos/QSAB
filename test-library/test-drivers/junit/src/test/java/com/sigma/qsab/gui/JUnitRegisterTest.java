@@ -94,6 +94,8 @@ public class JUnitRegisterTest {
         
         runner.clickButton("Logga in");
         
+        runner.assertLoggedIn();
+        
         runner.pause(3000);
     }
 

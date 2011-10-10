@@ -48,13 +48,13 @@
             <scope>test</scope>
             <classifier>tests</classifier>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>com.sigma.qsab</groupId>
             <artifactId>fest</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>test</scope>
             <classifier>tests</classifier>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>com.sigma.qsab</groupId>
             <artifactId>sikuli</artifactId>
@@ -69,11 +69,11 @@
             <scope>test</scope>
             <classifier>tests</classifier>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.robotframework</groupId>
             <artifactId>robotframework</artifactId>

@@ -46,7 +46,6 @@ public class UISpec4JGUIRunner extends UISpecTestCase implements GUIRunner {
 
     @Override
     public void clickButton(final String buttonText) {
-        System.out.println("==== CLICKING BUTTON: " + buttonText + " ====");
         ComponentMatcher buttonMatcher = new ComponentMatcher() {
 
             @Override
@@ -83,20 +82,17 @@ public class UISpec4JGUIRunner extends UISpecTestCase implements GUIRunner {
 
     @Override
     public void fillInName(String firstName, String lastName) {
-        System.out.println("==== FILLING OUT NAME ====");
         findTextBox("field_" + gs.getString(GUIStrings.FIRSTNAME)).setText(firstName);
         findTextBox("field_" + gs.getString(GUIStrings.LASTNAME)).setText(lastName);
     }
 
     @Override
     public void fillInSocialID(String socialID) {
-        System.out.println("==== FILLING OUT SOCIAL ID ====");
         findTextBox("field_" + gs.getString(GUIStrings.SOCIALID)).setText(socialID);
     }
 
     @Override
     public void fillInAddress(String street, String zipcode, String city) {
-        System.out.println("==== FILLING OUT ADDRESS ====");
         findTextBox("field_" + gs.getString(GUIStrings.STREET)).setText(street);
         findTextBox("field_" + gs.getString(GUIStrings.ZIPCODE)).setText(zipcode);
         findTextBox("field_" + gs.getString(GUIStrings.CITY)).setText(city);
@@ -104,25 +100,21 @@ public class UISpec4JGUIRunner extends UISpecTestCase implements GUIRunner {
 
     @Override
     public void fillInPhoneNumber(String phoneNumber) {
-        System.out.println("==== FILLING OUT PHONE NUMBER ====");
         findTextBox("field_" + gs.getString(GUIStrings.PHONE)).setText(phoneNumber);
     }
 
     @Override
     public void fillInCellPhoneNumber(String cellPhoneNumber) {
-        System.out.println("==== FILLING OUT CELLPHONE NUMBER ====");
         findTextBox("field_" + gs.getString(GUIStrings.CELLPHONE)).setText(cellPhoneNumber);
     }
 
     @Override
     public void fillInEmail(String email) {
-        System.out.println("==== FILLING OUT E-MAIL ====");
         findTextBox("field_" + gs.getString(GUIStrings.EMAIL)).setText(email);
     }
 
     @Override
     public void fillInPasswordTwice(String password) {
-        System.out.println("==== FILLING OUT PASSWORD ====");
         findPasswordField("field_" + gs.getString(GUIStrings.PASSWORD)).setPassword(password);
         findPasswordField("field_" + gs.getString(GUIStrings.PASSWORDREPEAT)).setPassword(password);
     }
@@ -168,7 +160,6 @@ public class UISpec4JGUIRunner extends UISpecTestCase implements GUIRunner {
 
     @Override
     public void login(String socialID, String password) {
-        System.out.println("==== LOGGING IN ====");
         findTextBox("field_" + gs.getString(GUIStrings.SOCIALID)).setText(socialID);
         findPasswordField("field_" + gs.getString(GUIStrings.PASSWORD)).setPassword(password);
     }

@@ -94,7 +94,7 @@ public class CucumberRegisterTest {
     @När("^kunden försöker logga in.$")
     public void logIn() {
         runner.clickButton("Logga in");
-        runner.login(socialID   , password);
+        runner.login(socialID, password);
         runner.clickButton("Logga in");
     }
 

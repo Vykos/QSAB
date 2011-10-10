@@ -174,7 +174,7 @@ public class SikuliGUIRunner implements GUIRunner {
     private String fullPath(final String text) {
         String fileName = text + ".png";
         final URL url = ClassLoader.getSystemResource(fileName);
-        return url.toExternalForm();//.getPath();
+        return url.toExternalForm();
     }
 
     private boolean successfullyClickedButton(String buttonFileName) {
