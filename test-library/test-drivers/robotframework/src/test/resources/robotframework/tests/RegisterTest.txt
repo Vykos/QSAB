@@ -1,0 +1,22 @@
+*** Test Cases ***
+
+Register customer
+    # Customers must register before he can use the services provided
+
+    Given a customer with the first name "Test", last name "Testsson", social id "121212-1212", that lives on "Testgatan 55" with the zip code "12345" in "Testort", have the phone number "08-123456", cellphone number "073-123456", email "test@test.com" and will be using the password "123456"
+    When a customer fills out the register sheet and click "Nästa"
+    Then a new customer is created in the database
+
+
+*** Settings ***
+Library          com.sigma.qsab.gui.RobotFrameworkRegisterTest
+
+*** Keywords ***'
+a customer with the first name "${firstName}", last name "${lastName}", social id "${socialID}", that lives on "${street}" with the zip code "${zipCode}" in "${city}", have the phone number "${phone}", cellphone number "${cellphone}", email "${email}" and will be using the password "${password}"
+    prepare Strings  ${firstName}  ${lastName}  ${socialID}  ${street}  ${zipCode}  ${city}  ${phone}  ${cellphone}  ${email}  ${password}"
+
+a customer fills out the register sheet and click "Nästa"
+    fill Out Register Form
+
+a new customer is created in the database
+    check If Customer Exists
