@@ -57,7 +57,7 @@ a customer with the social id "${socialID}" and the password "${password}"
 a customer fills out the register sheet and click "Nästa"
     fill Out Register Form
 
-When the bug "${glitch}" is selected and a customer fills out the register sheet and click "Nästa"
+the bug "${glitch}" is selected and a customer fills out the register sheet and click "Nästa"
     fill Out Register Form With Selected Bug  ${glitch}
 
 the customer tries to log in
